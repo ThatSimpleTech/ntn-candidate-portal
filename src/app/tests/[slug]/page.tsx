@@ -150,7 +150,7 @@ export default async function TestPage({ params }: Props) {
 					</p>
 					<Link
 						href="/dashboard"
-						className="eyebrow mt-6 inline-block bg-brass px-8 py-4 text-ink transition-colors hover:bg-[#c8ab14]"
+						className="btn-gold eyebrow mt-6 inline-block px-8 py-4"
 					>
 						Schedule the {test.name} →
 					</Link>

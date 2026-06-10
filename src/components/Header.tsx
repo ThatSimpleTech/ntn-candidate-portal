@@ -50,7 +50,7 @@ export function Header() {
 					})}
 					<Link
 						href="/dashboard"
-						className="eyebrow ml-3 bg-brass px-4 py-2.5 text-ink transition-colors hover:bg-[#c8ab14]"
+						className="btn-gold eyebrow ml-3 px-4 py-2.5"
 					>
 						Candidate Login
 					</Link>
@@ -88,7 +88,7 @@ export function Header() {
 					))}
 					<Link
 						href="/dashboard"
-						className="eyebrow mt-3 block bg-brass px-4 py-3 text-center text-ink"
+						className="btn-gold eyebrow mt-3 block px-4 py-3 text-center"
 						onClick={() => setOpen(false)}
 					>
 						Candidate Login

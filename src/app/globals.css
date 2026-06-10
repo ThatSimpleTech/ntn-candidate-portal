@@ -1,24 +1,25 @@
 @import "tailwindcss";
 
 /*
- * NTN brand system — derived from National Testing Network's live properties:
- * charcoal/near-black foundations, NTN gold (sampled #d0b820 from the logo),
- * white content sections, darkened public-safety photography.
+ * NTN brand system — "The Commission": engraved civic-institution register.
+ * Charcoal foundations, NTN gold as a *material* (sampled #d0b820 from the
+ * logo), white content sections, duotoned public-safety photography,
+ * ceremonial motion. No terminal/mono UI chrome.
  * Display: Barlow Condensed (matches NTN's condensed uppercase headlines).
- * Body: Public Sans. Data: IBM Plex Mono.
+ * Body: Public Sans.
  */
 
 :root {
-  --ink: #1a1a1a;            /* NTN charcoal (header/hero) */
-  --ink-2: #242424;
-  --paper: #ffffff;          /* white content sections */
-  --paper-2: #f4f4f2;        /* light gray alt sections */
-  --signal: #99800a;         /* deep brand gold — text accents on light */
-  --signal-deep: #7a6608;
-  --brass: #e0c427;          /* bright NTN gold — buttons, accents on dark */
-  --muted: #5d5d5d;
+  --ink: #181818;
+  --ink-2: #232323;
+  --paper: #ffffff;
+  --paper-2: #f5f4f0;
+  --signal: #97800d;          /* deep brand gold — text accents on light */
+  --signal-deep: #786608;
+  --brass: #d8bd22;           /* bright NTN gold — accents on dark */
+  --muted: #585858;
   --muted-on-ink: #bdbdbd;
-  --line: #e3e3e0;
+  --line: #e4e3df;
   --line-on-ink: #3a3a3a;
 }
 
@@ -36,7 +37,6 @@
   --color-line-ink: var(--line-on-ink);
   --font-display: var(--font-barlow);
   --font-sans: var(--font-public-sans);
-  --font-mono: var(--font-plex-mono);
 }
 
 html {
@@ -63,52 +63,117 @@ body {
   line-height: 0.95;
 }
 
+/* Engraved small-caps label — replaces mono eyebrows */
 .eyebrow {
-  font-family: var(--font-plex-mono), monospace;
-  font-size: 0.6875rem;
-  font-weight: 600;
+  font-family: var(--font-public-sans), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
 }
 
+/* Data values: tabular figures, not a typewriter */
 .mono {
-  font-family: var(--font-plex-mono), monospace;
+  font-family: var(--font-public-sans), sans-serif;
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: 0.01em;
 }
 
-/* Slim gold brand rule (replaces decorative striping) */
+/* ---- Gold as a material ---- */
+
 .gold-rule {
-  background: linear-gradient(90deg, var(--brass), #c8ab14);
+  background: linear-gradient(90deg, #e6cc3b 0%, var(--brass) 35%, #b69d14 100%);
 }
 
-/* Photographic hero: NTN's darkened imagery with a charcoal gradient */
+/* Foil-gradient display numbers/text on dark grounds */
+.gold-text {
+  background: linear-gradient(170deg, #f0d95c 0%, var(--brass) 45%, #a8901a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Primary action: brushed-gold button with a machined bevel */
+.btn-gold {
+  display: inline-block;
+  color: var(--ink);
+  background: linear-gradient(180deg, #e9d041 0%, #d3ba1d 55%, #c4ac15 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16),
+    0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.btn-gold:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16),
+    0 6px 16px -6px rgba(0, 0, 0, 0.45);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+  filter: brightness(0.98);
+}
+
+/* ---- Photography ---- */
+
+/* Cinematic photo section: charcoal-to-transparent grade + warm gold cast */
 .hero-photo {
   position: relative;
+  overflow: hidden;
   background-color: var(--ink);
-  background-size: cover;
-  background-position: center;
+}
+
+.hero-photo > .hero-img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .hero-photo::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    100deg,
-    rgba(20, 20, 20, 0.92) 0%,
-    rgba(20, 20, 20, 0.72) 55%,
-    rgba(20, 20, 20, 0.45) 100%
-  );
+  z-index: 1;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(18, 18, 18, 0.94) 0%,
+      rgba(18, 18, 18, 0.74) 55%,
+      rgba(18, 18, 18, 0.42) 100%
+    ),
+    linear-gradient(rgba(208, 184, 32, 0.07), rgba(208, 184, 32, 0.07));
 }
 
-.hero-photo > * {
+.hero-photo > *:not(.hero-img) {
   position: relative;
+  z-index: 2;
 }
 
-/* Staggered page-load reveal */
+/* Slow ceremonial push-in on hero photography */
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+.kenburns {
+  animation: kenburns 24s ease-out forwards;
+  transform-origin: 60% 40%;
+}
+
+/* ---- Ceremonial motion ---- */
+
+/* Hero load reveal */
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -117,82 +182,185 @@ body {
 }
 
 .rise {
-  animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.rise-1 { animation-delay: 0.05s; }
-.rise-2 { animation-delay: 0.15s; }
-.rise-3 { animation-delay: 0.25s; }
-.rise-4 { animation-delay: 0.35s; }
-.rise-5 { animation-delay: 0.45s; }
+.rise-1 { animation-delay: 0.1s; }
+.rise-2 { animation-delay: 0.25s; }
+.rise-3 { animation-delay: 0.4s; }
+.rise-4 { animation-delay: 0.55s; }
+.rise-5 { animation-delay: 0.7s; }
+
+/* Scroll-triggered reveal (Reveal component adds .in via IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Gold bar that draws itself when its .reveal parent enters */
+.heading-rule {
+  display: block;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #e6cc3b, #b69d14);
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+}
+
+.reveal.in .heading-rule,
+.heading-rule.in {
+  width: 72px;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .rise {
+  .rise,
+  .kenburns {
     animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .heading-rule {
+    width: 72px;
   }
   html {
     scroll-behavior: auto;
   }
 }
 
-/* Agency seal marquee: continuous loop, edge-faded, pauses on hover */
-.marquee {
-  overflow: hidden;
-  mask-image: linear-gradient(
-    90deg,
-    transparent 0,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
+/* ---- Agency honor ring: seals as mounted medallions on a rotating cylinder ---- */
+
+.ring-stage {
+  perspective: 1500px;
+  perspective-origin: 50% 38%;
 }
 
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+@keyframes ring-spin {
+  from { transform: rotateX(-9deg) rotateY(0deg); }
+  to { transform: rotateX(-9deg) rotateY(-360deg); }
 }
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 45s linear infinite;
+.ring {
+  --ring-r: 305px;
+  position: relative;
+  margin: 0 auto;
+  height: 190px;
+  width: 150px;
+  transform-style: preserve-3d;
+  animation: ring-spin 42s linear infinite;
 }
 
-.marquee:hover .marquee-track {
+.ring-stage:hover .ring {
   animation-play-state: paused;
 }
 
-.marquee-track img {
-  filter: grayscale(35%) opacity(0.85);
-  transition: filter 0.25s ease, transform 0.25s ease;
+.ring-item {
+  position: absolute;
+  inset: 0 auto auto 0;
+  transform: rotateY(var(--a)) translateZ(var(--ring-r));
+  backface-visibility: hidden;
 }
 
-.marquee-track a:hover img,
-.marquee-track div:hover img {
-  filter: none;
-  transform: scale(1.06);
+/* Mounted medallion: ivory coin plate with a machined gold bezel */
+.coin-plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  width: 150px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f3f1ea 65%, #e4e1d6 100%);
+  box-shadow:
+    0 0 0 1px #c9b227,
+    0 0 0 4px #ece9df,
+    0 0 0 5px rgba(201, 178, 39, 0.45),
+    0 14px 28px -12px rgba(0, 0, 0, 0.55);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-    flex-wrap: wrap;
-    width: auto;
-    justify-content: center;
+.coin-plate img {
+  height: 112px;
+  width: 112px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.18));
+}
+
+/* Floor glow beneath the ring */
+.ring-floor {
+  margin: -10px auto 0;
+  height: 70px;
+  max-width: 640px;
+  background: radial-gradient(
+    ellipse 50% 100% at 50% 0%,
+    rgba(216, 189, 34, 0.18) 0%,
+    rgba(216, 189, 34, 0.05) 45%,
+    transparent 75%
+  );
+}
+
+@media (max-width: 640px) {
+  .ring {
+    --ring-r: 212px;
+    height: 140px;
+    width: 104px;
+  }
+  .coin-plate {
+    height: 104px;
+    width: 104px;
+  }
+  .coin-plate img {
+    height: 78px;
+    width: 78px;
   }
 }
 
-/* Card hover: quiet lift, gold underline cue */
+@media (prefers-reduced-motion: reduce) {
+  .ring {
+    animation: none;
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    transform: none;
+  }
+  .ring-item {
+    position: static;
+    transform: none;
+  }
+  .ring-item[data-dup="true"] {
+    display: none;
+  }
+  .ring-floor {
+    display: none;
+  }
+}
+
+/* ---- Surfaces ---- */
+
+/* Letterpress card: layered ambient + key shadow, gold cue on hover */
 .card-lift {
+  box-shadow:
+    0 1px 2px rgba(24, 24, 24, 0.05),
+    0 4px 12px -6px rgba(24, 24, 24, 0.08);
   transition:
-    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .card-lift:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px -12px rgba(20, 20, 20, 0.35);
   border-color: var(--brass);
+  box-shadow:
+    0 2px 4px rgba(24, 24, 24, 0.06),
+    0 18px 36px -16px rgba(24, 24, 24, 0.28);
 }
-

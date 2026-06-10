@@ -100,7 +100,7 @@ export function DashboardView({
 					<button
 						type="button"
 						onClick={() => onCreateApplication()}
-						className="eyebrow bg-brass px-5 py-3 text-ink transition-colors hover:bg-[#c8ab14]"
+						className="btn-gold eyebrow px-5 py-3"
 					>
 						+ File demo application
 					</button>
@@ -151,7 +151,7 @@ export function DashboardView({
 												</div>
 												<div className="mt-1 h-2 w-full border border-ink bg-paper-2">
 													<div
-														className="h-full bg-brass"
+														className="gold-rule h-full"
 														style={{ width: `${(s.raw / s.max) * 100}%` }}
 													/>
 												</div>

@@ -154,7 +154,7 @@ export default async function JobPage({ params }: Props) {
 							</ol>
 							<Link
 								href="/dashboard"
-								className="eyebrow mt-6 block bg-brass px-5 py-3 text-center text-ink transition-colors hover:bg-[#c8ab14]"
+								className="btn-gold eyebrow mt-6 block px-5 py-3 text-center"
 							>
 								Start application →
 							</Link>

@@ -37,7 +37,9 @@ const VALUE_PROPS = [
 export default function DepartmentsPage() {
 	return (
 		<div>
-			<section className="hero-photo text-paper" style={{ backgroundImage: "url('/brand/landing-02.jpg')" }}>
+			<section className="hero-photo text-paper">
+				{/* eslint-disable-next-line @next/next/no-img-element */}
+				<img src="/brand/landing-02.jpg" alt="" className="hero-img kenburns" />
 				<div>
 					<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
 						<p className="eyebrow text-brass">For departments & agencies</p>
@@ -50,7 +52,7 @@ export default function DepartmentsPage() {
 						</p>
 						<a
 							href="mailto:agencies@nationaltestingnetwork.com"
-							className="eyebrow mt-10 inline-block border-2 border-brass bg-brass px-7 py-4 text-ink transition-colors hover:bg-transparent hover:text-brass"
+							className="btn-gold eyebrow mt-10 px-7 py-4"
 						>
 							Talk to the agency team →
 						</a>
