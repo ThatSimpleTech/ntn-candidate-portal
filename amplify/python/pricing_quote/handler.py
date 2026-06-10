@@ -23,30 +23,22 @@ BASE_PRICES = {
 
 ADDITIONAL_DEPARTMENT_FEE = 12.00
 
-CORS_HEADERS = {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-}
-
-
+# CORS is owned entirely by the Function URL config (amplify/backend.ts);
+# emitting Access-Control-* here too produces duplicate headers, which
+# browsers reject.
 def _response(status, body):
     return {
         "statusCode": status,
-        "headers": CORS_HEADERS,
+        "headers": {"Content-Type": "application/json"},
         "body": json.dumps(body),
     }
 
 
 def lambda_handler(event, context):
+    params = event.get("queryStringParameters") or {}
     method = (
         event.get("requestContext", {}).get("http", {}).get("method", "GET")
     )
-    if method == "OPTIONS":
-        return _response(200, {})
-
-    params = event.get("queryStringParameters") or {}
     if method == "POST" and event.get("body"):
         try:
             params = json.loads(event["body"])
