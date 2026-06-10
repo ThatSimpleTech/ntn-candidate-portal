@@ -1,0 +1,4 @@
+{
+	"version": "1.4",
+	"_comment": "Local stub so `next build` succeeds without a deployed backend. The Amplify Gen2 pipeline (ampx pipeline-deploy) and the local sandbox (ampx sandbox) both overwrite this file with real outputs."
+}

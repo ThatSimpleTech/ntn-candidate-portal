@@ -1,0 +1,23 @@
+# National Testing Network
+
+> Pre-employment testing for public safety careers. Candidates take one
+> nationally validated exam (in person at 100+ testing centers or proctored
+> virtually) and send scores to any participating fire, law enforcement,
+> 911 dispatch, corrections, EMS, or transit department in the United States.
+
+## Key facts
+
+- Founded 2006 in Lynnwood, WA; the test-administration arm of Ergometrics & Applied Personnel Research, Inc.
+- Exams: FireTEAM (fire, $55), FrontLine National (law enforcement, $55), ECOMM National (911 dispatch, $55), REACT (corrections, $41), MedicTEAM (EMS, $80), CPAT (firefighter physical, $125).
+- Base fee includes score delivery to one department; each additional department is $12.
+- Scores are typically valid for 12 months; retakes allowed after 90 days.
+- Virtual proctored testing is available for all written exams.
+- Fee waivers are available for candidates with financial need.
+
+## Pages
+
+- /jobs : open public safety recruitments accepting NTN scores
+- /tests : the exam catalog with sections, duration, and pricing
+- /pricing : full fee schedule and cost estimator
+- /departments : information for hiring agencies
+- /faq : scheduling, scoring, transfers, and retake policy
