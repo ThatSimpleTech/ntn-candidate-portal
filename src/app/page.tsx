@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { CountUp } from '@/components/CountUp';
 import { Reveal } from '@/components/Reveal';
+import { TrackIcon } from '@/components/TrackIcon';
 import {
 	CLASSIFICATION_LABELS,
 	type Classification,
@@ -78,18 +79,19 @@ export default function HomePage() {
 				}}
 			/>
 
-			{/* Hero — NTN photography with a slow ceremonial push-in */}
+			{/* Hero — NTN photography, cinematic grade, slow ceremonial push-in */}
 			<section className="hero-photo text-paper">
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img src="/brand/landing-01.jpg" alt="" className="hero-img kenburns" />
-				<div className="mx-auto max-w-6xl px-4 pb-24 pt-20 sm:px-6 lg:pt-28">
-					<p className="eyebrow rise rise-1 text-brass">
+				<div className="mx-auto flex min-h-[78vh] max-w-6xl flex-col justify-center px-4 pb-40 pt-24 sm:px-6 lg:pt-28">
+					<p className="eyebrow rise rise-1 flex items-center gap-3 text-brass">
+						<span className="gold-rule h-px w-10" aria-hidden />
 						Public safety testing &middot; Est. 2006
 					</p>
 					<h1 className="display rise rise-2 mt-6 max-w-4xl text-6xl sm:text-7xl lg:text-8xl">
 						Building stronger
 						<br />
-						public safety teams.
+						<span className="gold-text">public safety</span> teams.
 					</h1>
 					<p className="rise rise-3 mt-7 max-w-xl text-lg leading-relaxed text-paper/85">
 						One test. Every department. Take a single job-built exam — in person or
@@ -102,33 +104,46 @@ export default function HomePage() {
 						</Link>
 						<Link
 							href="/tests"
-							className="eyebrow border border-paper/60 px-7 py-4 text-paper transition-colors hover:border-brass hover:text-brass"
+							className="eyebrow border border-paper/60 px-7 py-4 text-paper backdrop-blur-sm transition-colors hover:border-brass hover:text-brass"
 						>
 							Explore the exams
 						</Link>
 					</div>
 				</div>
-				<div className="border-t border-white/15 bg-ink/75 backdrop-blur-sm">
-					<div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-white/10 md:grid-cols-4">
-						{STATS.map((s, i) => (
-							<div key={s.label} className={`rise rise-${i + 2} px-5 py-6`}>
-								<CountUp
-									to={s.to}
-									prefix={s.prefix}
-									suffix={s.suffix}
-									abbreviate={s.abbreviate}
-									className="display gold-text text-4xl"
-								/>
-								<p className="mt-1 text-xs text-paper/70">{s.label}</p>
-							</div>
-						))}
-					</div>
+				<div
+					className="scroll-cue rise rise-5 absolute bottom-36 left-1/2 hidden -translate-x-1/2 sm:block"
+					aria-hidden
+				>
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6 text-brass">
+						<path d="M12 4v14m0 0 6-6m-6 6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+					</svg>
 				</div>
 			</section>
 
+			{/* Commission record — smoked-glass strip mounted over the hero's foot */}
+			<div className="relative z-10 mx-auto -mt-24 max-w-6xl px-4 sm:px-6">
+				<div className="glass-ink grid grid-cols-2 text-paper md:grid-cols-4">
+					{STATS.map((s, i) => (
+						<div
+							key={s.label}
+							className={`rise rise-${i + 2} border-white/10 px-6 py-7 ${i > 0 ? 'border-l' : ''} ${i === 2 ? 'max-md:border-l-0' : ''} ${i >= 2 ? 'max-md:border-t' : ''}`}
+						>
+							<CountUp
+								to={s.to}
+								prefix={s.prefix}
+								suffix={s.suffix}
+								abbreviate={s.abbreviate}
+								className="display gold-text text-4xl lg:text-5xl"
+							/>
+							<p className="mt-2 text-xs text-paper/70">{s.label}</p>
+						</div>
+					))}
+				</div>
+			</div>
+
 			{/* Career tracks */}
 			<section className="border-b border-line bg-paper">
-				<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+				<div className="mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6">
 					<Reveal>
 						<div className="flex items-end justify-between gap-6">
 							<div>
@@ -149,13 +164,20 @@ export default function HomePage() {
 							<Reveal key={t.classification} delay={i * 70}>
 								<Link
 									href={`/jobs?track=${t.classification}`}
-									className="card-lift block h-full border border-line bg-paper p-5"
+									className="card-lift group block h-full border border-line p-5"
 								>
-									<span className="gold-rule block h-1 w-8" aria-hidden />
+									<TrackIcon
+										classification={t.classification}
+										className="h-9 w-9 text-signal transition-transform duration-300 group-hover:scale-110"
+									/>
 									<p className="display mt-5 text-xl leading-tight">{t.label}</p>
 									<p className="mono mt-2 text-xs text-muted">
 										{t.count} open posting{t.count === 1 ? '' : 's'}
 									</p>
+									<span
+										className="gold-rule mt-4 block h-0.5 w-8 transition-all duration-300 group-hover:w-14"
+										aria-hidden
+									/>
 								</Link>
 							</Reveal>
 						))}
@@ -163,9 +185,9 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			{/* How it works */}
-			<section className="border-b border-line bg-paper-2">
-				<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+			{/* How it works — three stations on one gold thread */}
+			<section className="paper-tex border-b border-line">
+				<div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
 					<Reveal>
 						<p className="eyebrow text-signal">How it works</p>
 						<h2 className="display mt-3 text-4xl sm:text-5xl">
@@ -173,25 +195,31 @@ export default function HomePage() {
 						</h2>
 						<span className="heading-rule mt-4" aria-hidden />
 					</Reveal>
-					<div className="mt-12 grid gap-4 md:grid-cols-3">
-						{STEPS.map((step, i) => (
-							<Reveal key={step.title} delay={i * 120}>
-								<div className="h-full border border-line bg-paper p-8">
-									<p className="display gold-text text-5xl">
-										{String(i + 1).padStart(2, '0')}
-									</p>
-									<h3 className="display mt-5 text-2xl">{step.title}</h3>
-									<p className="mt-3 text-sm leading-relaxed text-muted">{step.body}</p>
-								</div>
-							</Reveal>
-						))}
+					<div className="relative mt-14">
+						<div
+							className="absolute left-0 right-0 top-14 hidden h-px bg-gradient-to-r from-transparent via-brass/70 to-transparent md:block"
+							aria-hidden
+						/>
+						<div className="relative grid gap-4 md:grid-cols-3">
+							{STEPS.map((step, i) => (
+								<Reveal key={step.title} delay={i * 120}>
+									<div className="card-static h-full border border-line p-8">
+										<p className="display gold-emboss text-6xl">
+											{String(i + 1).padStart(2, '0')}
+										</p>
+										<h3 className="display mt-5 text-2xl">{step.title}</h3>
+										<p className="mt-3 text-sm leading-relaxed text-muted">{step.body}</p>
+									</div>
+								</Reveal>
+							))}
+						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* Exam catalog */}
 			<section className="border-b border-line bg-paper">
-				<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+				<div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
 					<Reveal>
 						<p className="eyebrow text-signal">The exams</p>
 						<h2 className="display mt-3 text-4xl sm:text-5xl">
@@ -204,9 +232,9 @@ export default function HomePage() {
 							<Reveal key={t.slug} delay={(i % 3) * 100}>
 								<Link
 									href={`/tests/${t.slug}`}
-									className="card-lift group flex h-full flex-col border border-line bg-paper"
+									className="card-lift group flex h-full flex-col border border-line"
 								>
-									<div className="flex items-center justify-between bg-ink px-5 py-3 text-paper">
+									<div className="ink-tex flex items-center justify-between px-5 py-3 text-paper">
 										<span className="eyebrow text-paper/60">{t.code}</span>
 										<span className="eyebrow text-brass">
 											{CLASSIFICATION_LABELS[t.classification]}
@@ -235,8 +263,8 @@ export default function HomePage() {
 			</section>
 
 			{/* Agency honor ring — NTN's real agency seals as mounted medallions */}
-			<section className="bg-ink text-paper" aria-label="Participating agencies">
-				<div className="mx-auto max-w-6xl overflow-hidden px-4 py-16 sm:px-6">
+			<section className="ink-tex text-paper" aria-label="Participating agencies">
+				<div className="mx-auto max-w-6xl overflow-hidden px-4 py-20 sm:px-6">
 					<Reveal>
 						<p className="eyebrow text-center text-brass">
 							Trusted by departments nationwide
@@ -278,7 +306,7 @@ export default function HomePage() {
 
 			{/* Split CTA */}
 			<section className="grid md:grid-cols-2">
-				<div className="border-b border-line bg-paper p-10 md:border-b-0 md:border-r lg:p-16">
+				<div className="paper-tex border-b border-line p-10 md:border-b-0 md:border-r lg:p-16">
 					<Reveal>
 						<p className="eyebrow text-signal">Candidates</p>
 						<h2 className="display mt-4 text-4xl">Your career starts with one exam</h2>
@@ -288,7 +316,7 @@ export default function HomePage() {
 						</p>
 						<Link
 							href="/dashboard"
-							className="eyebrow mt-8 inline-block bg-ink px-6 py-3.5 text-paper transition-colors hover:bg-ink-2"
+							className="eyebrow mt-8 inline-block bg-ink px-6 py-3.5 text-paper shadow-[0_8px_20px_-8px_rgba(24,24,24,0.5)] transition-all hover:-translate-y-0.5 hover:bg-ink-2 hover:shadow-[0_14px_28px_-10px_rgba(24,24,24,0.55)]"
 						>
 							Create your account →
 						</Link>

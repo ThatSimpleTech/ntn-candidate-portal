@@ -84,11 +84,16 @@ function AuthedDashboard({
 
 export function LiveDashboard() {
 	return (
-		<div className="bg-paper-2 min-h-[60vh] py-8">
-			<Authenticator
-				signUpAttributes={['given_name', 'family_name']}
-				variation="modal"
-			>
+		<div className="auth-shell min-h-[60vh]">
+			<div className="auth-intro mx-auto mb-10 max-w-xl text-center text-paper">
+				<p className="eyebrow text-brass">Candidate portal</p>
+				<h1 className="display mt-4 text-5xl">Report for duty</h1>
+				<p className="mt-4 text-sm leading-relaxed text-paper/70">
+					Sign in to schedule exams, track scores, and manage the departments
+					receiving them — all from one dashboard.
+				</p>
+			</div>
+			<Authenticator signUpAttributes={['given_name', 'family_name']}>
 				{({ signOut, user }) => (
 					<AuthedDashboard
 						username={user?.signInDetails?.loginId ?? 'Candidate'}

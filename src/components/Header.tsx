@@ -18,7 +18,7 @@ export function Header() {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<header className="sticky top-0 z-50 bg-ink text-paper">
+		<header className="header-glass sticky top-0 z-50 text-paper">
 			<div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
 				<Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
 					<Image
@@ -26,8 +26,8 @@ export function Header() {
 						alt="National Testing Network"
 						width={150}
 						height={56}
-						priority
-						className="h-11 w-auto"
+						preload
+						className="h-11 w-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]"
 					/>
 				</Link>
 
@@ -38,10 +38,9 @@ export function Header() {
 							<Link
 								key={item.href}
 								href={item.href}
-								className={`eyebrow px-3 py-2 transition-colors ${
-									active
-										? 'text-brass'
-										: 'text-paper hover:text-brass'
+								data-active={active}
+								className={`eyebrow nav-link px-3 py-2 transition-colors ${
+									active ? 'text-brass' : 'text-paper hover:text-brass'
 								}`}
 							>
 								{item.label}
@@ -75,7 +74,10 @@ export function Header() {
 			<div className="gold-rule h-0.5 w-full" aria-hidden />
 
 			{open && (
-				<nav className="border-t border-line-ink bg-ink px-4 pb-4 lg:hidden" aria-label="Mobile">
+				<nav
+					className="header-glass border-t border-line-ink px-4 pb-4 lg:hidden"
+					aria-label="Mobile"
+				>
 					{NAV.map((item) => (
 						<Link
 							key={item.href}

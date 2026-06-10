@@ -87,7 +87,7 @@ export function DashboardView({
 			</div>
 
 			{mode === 'demo' && (
-				<p className="mt-6 border border-dashed border-signal bg-paper-2 p-4 text-sm text-muted">
+				<p className="paper-tex mt-6 border border-dashed border-signal p-4 text-sm text-muted">
 					The backend isn&apos;t connected in this build, so you&apos;re seeing sample
 					data. Deployed builds gate this page behind Cognito sign-in and read your
 					applications from AppSync.
@@ -116,7 +116,7 @@ export function DashboardView({
 				{applications.map((app) => {
 					const summary = scores[app.id];
 					return (
-						<div key={app.id} className="border border-line bg-paper">
+						<div key={app.id} className="card-static border border-line">
 							<div className="flex flex-wrap items-center justify-between gap-4 border-b border-line px-5 py-4">
 								<div>
 									<p className="display text-2xl">{app.jobTitle}</p>
@@ -158,10 +158,10 @@ export function DashboardView({
 											</div>
 										))}
 									</div>
-									<div className="border border-line p-4">
+									<div className="paper-tex border border-line p-4">
 										<p className="eyebrow text-signal">Overall</p>
 										<p className="display mt-2 text-5xl">
-											{summary.overall.percentile}
+											<span className="gold-emboss">{summary.overall.percentile}</span>
 											<span className="text-xl text-muted">/100</span>
 										</p>
 										<p
