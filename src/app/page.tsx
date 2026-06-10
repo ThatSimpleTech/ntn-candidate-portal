@@ -2,7 +2,6 @@ import Link from 'next/link';
 import {
 	CLASSIFICATION_LABELS,
 	type Classification,
-	DEPARTMENTS,
 	JOBS,
 	SITE,
 	TESTS,
@@ -38,13 +37,15 @@ const TRACKS = (Object.keys(CLASSIFICATION_LABELS) as Classification[]).map((c) 
 	count: jobCountFor(c),
 }));
 
-const sealInitials = (name: string) =>
-	name
-		.split(' ')
-		.filter((w) => w[0] === w[0]?.toUpperCase())
-		.slice(0, 2)
-		.map((w) => w[0])
-		.join('');
+/** Real agency seals NTN displays on its current welcome page. */
+const SEALS = [
+	{ file: 'seattle', name: 'City of Seattle, WA' },
+	{ file: 'milwaukee', name: 'City of Milwaukee, WI' },
+	{ file: 'aurora', name: 'City of Aurora, CO' },
+	{ file: 'denver', name: 'City and County of Denver, CO' },
+	{ file: 'baltimore-city', name: 'City of Baltimore, MD' },
+	{ file: 'baltimore-county', name: 'Baltimore County, MD' },
+];
 
 const orgJsonLd = {
 	'@context': 'https://schema.org',
@@ -218,23 +219,35 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			{/* Departments on the network — seal strip, echoes NTN's agency seals */}
-			<section className="border-b border-line bg-paper-2" aria-label="Participating departments">
+			{/* Agency seals — the same seals NTN shows today, on a continuous loop */}
+			<section className="border-b border-line bg-paper" aria-label="Participating agencies">
 				<div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
 					<p className="eyebrow text-center text-signal">
 						Trusted by departments nationwide
 					</p>
-					<div className="mt-8 grid grid-cols-4 gap-6 sm:grid-cols-8">
-						{DEPARTMENTS.map((d) => (
-							<div key={d.slug} className="flex flex-col items-center gap-2 text-center">
-								<span className="seal h-16 w-16 text-lg" title={d.name}>
-									{sealInitials(d.name)}
-								</span>
-								<span className="text-[11px] leading-tight text-muted">
-									{d.city}, {d.state}
-								</span>
-							</div>
-						))}
+					<div className="marquee mt-10">
+						<div className="marquee-track items-center gap-16 pr-16">
+							{[...SEALS, ...SEALS].map((s, i) => (
+								<div
+									key={`${s.file}-${i}`}
+									className="flex w-28 shrink-0 flex-col items-center gap-3"
+									aria-hidden={i >= SEALS.length}
+								>
+									{/* eslint-disable-next-line @next/next/no-img-element */}
+									<img
+										src={`/brand/seals/${s.file}.png`}
+										alt={i < SEALS.length ? `Seal of ${s.name}` : ''}
+										width={112}
+										height={112}
+										loading="lazy"
+										className="h-24 w-24 object-contain sm:h-28 sm:w-28"
+									/>
+									<span className="text-center text-[11px] leading-tight text-muted">
+										{s.name}
+									</span>
+								</div>
+							))}
+						</div>
 					</div>
 				</div>
 			</section>
