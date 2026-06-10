@@ -65,7 +65,7 @@ export default async function TestPage({ params }: Props) {
 			/>
 
 			<header className="border-b-2 border-ink bg-ink text-paper">
-				<div className="blueprint">
+				<div>
 					<div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
 						<nav className="eyebrow text-muted-ink" aria-label="Breadcrumb">
 							<Link href="/tests" className="hover:text-brass">
@@ -79,7 +79,7 @@ export default async function TestPage({ params }: Props) {
 								<h1 className="display mt-2 text-6xl sm:text-7xl">{test.name}</h1>
 								<p className="mt-4 max-w-xl text-muted-ink">{test.audience}</p>
 							</div>
-							<div className="border-2 border-brass p-5 text-right">
+							<div className="border border-brass bg-ink/60 p-5 text-right">
 								<p className="mono text-4xl">${test.priceUsd}</p>
 								<p className="mono mt-1 text-xs text-muted-ink">
 									includes one department
@@ -101,9 +101,9 @@ export default async function TestPage({ params }: Props) {
 				</div>
 
 				<h2 className="display mt-14 text-4xl">What the exam covers</h2>
-				<div className="mt-8 grid gap-px border-2 border-ink bg-ink md:grid-cols-2">
+				<div className="mt-8 grid gap-4 md:grid-cols-2">
 					{test.sections.map((s, i) => (
-						<div key={s.name} className="bg-paper p-6">
+						<div key={s.name} className="border border-line bg-paper p-6">
 							<p className="mono text-xs text-signal">
 								SECTION {String(i + 1).padStart(2, '0')}
 							</p>
@@ -125,7 +125,7 @@ export default async function TestPage({ params }: Props) {
 									<li key={job.slug}>
 										<Link
 											href={`/jobs/${job.slug}`}
-											className="card-lift card-lift-signal flex flex-wrap items-center justify-between gap-4 border-2 border-ink bg-paper px-5 py-4"
+											className="card-lift flex flex-wrap items-center justify-between gap-4 border border-line bg-paper px-5 py-4"
 										>
 											<span>
 												<span className="display text-2xl">{job.title}</span>
@@ -142,7 +142,7 @@ export default async function TestPage({ params }: Props) {
 					</>
 				)}
 
-				<div className="mt-14 border-2 border-ink bg-paper-2 p-8 text-center">
+				<div className="mt-14 border border-line bg-paper-2 p-8 text-center">
 					<h2 className="display text-3xl">Ready to schedule?</h2>
 					<p className="mx-auto mt-3 max-w-md text-sm text-muted">
 						Create your account, pick a date, and choose your departments. Most
@@ -150,7 +150,7 @@ export default async function TestPage({ params }: Props) {
 					</p>
 					<Link
 						href="/dashboard"
-						className="eyebrow mt-6 inline-block border-2 border-ink bg-signal px-8 py-4 text-paper transition-colors hover:bg-signal-deep"
+						className="eyebrow mt-6 inline-block bg-brass px-8 py-4 text-ink transition-colors hover:bg-[#c8ab14]"
 					>
 						Schedule the {test.name} →
 					</Link>

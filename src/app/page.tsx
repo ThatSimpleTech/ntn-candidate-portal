@@ -38,6 +38,14 @@ const TRACKS = (Object.keys(CLASSIFICATION_LABELS) as Classification[]).map((c) 
 	count: jobCountFor(c),
 }));
 
+const sealInitials = (name: string) =>
+	name
+		.split(' ')
+		.filter((w) => w[0] === w[0]?.toUpperCase())
+		.slice(0, 2)
+		.map((w) => w[0])
+		.join('');
+
 const orgJsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Organization',
@@ -67,45 +75,46 @@ export default function HomePage() {
 				}}
 			/>
 
-			{/* Hero */}
-			<section className="border-b-2 border-ink bg-ink text-paper">
-				<div className="blueprint">
-					<div className="mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6 lg:pt-24">
-						<p className="eyebrow rise rise-1 text-brass">
-							Public safety hiring / Est. 2006
-						</p>
-						<h1 className="display rise rise-2 mt-6 max-w-4xl text-6xl sm:text-7xl lg:text-[7rem]">
-							One test.
-							<br />
-							<span className="text-signal">Every department.</span>
-						</h1>
-						<p className="rise rise-3 mt-8 max-w-xl text-lg text-muted-ink">
-							Stop re-testing for every city. Take one job-built exam — in person or
-							from home — and send your scores to fire, police, 911, corrections, and
-							EMS departments hiring across the country.
-						</p>
-						<div className="rise rise-4 mt-10 flex flex-wrap gap-4">
-							<Link
-								href="/jobs"
-								className="eyebrow border-2 border-signal bg-signal px-7 py-4 text-paper transition-colors hover:border-paper hover:bg-signal-deep"
-							>
-								Browse open jobs →
-							</Link>
-							<Link
-								href="/tests"
-								className="eyebrow border-2 border-paper px-7 py-4 text-paper transition-colors hover:bg-paper hover:text-ink"
-							>
-								Explore the exams
-							</Link>
-						</div>
+			{/* Hero — NTN photography, NTN tagline */}
+			<section
+				className="hero-photo text-paper"
+				style={{ backgroundImage: "url('/brand/landing-01.jpg')" }}
+			>
+				<div className="mx-auto max-w-6xl px-4 pb-24 pt-20 sm:px-6 lg:pt-28">
+					<p className="eyebrow rise rise-1 text-brass">
+						Public safety testing / Est. 2006
+					</p>
+					<h1 className="display rise rise-2 mt-6 max-w-4xl text-6xl sm:text-7xl lg:text-8xl">
+						Building stronger
+						<br />
+						public safety teams.
+					</h1>
+					<p className="rise rise-3 mt-7 max-w-xl text-lg text-paper/85">
+						One test. Every department. Take a single job-built exam — in person or
+						from home — and send your scores to fire, police, 911, corrections, and
+						EMS departments hiring across the country.
+					</p>
+					<div className="rise rise-4 mt-10 flex flex-wrap gap-4">
+						<Link
+							href="/jobs"
+							className="eyebrow bg-brass px-7 py-4 text-ink transition-colors hover:bg-[#c8ab14]"
+						>
+							Browse open jobs →
+						</Link>
+						<Link
+							href="/tests"
+							className="eyebrow border border-paper/70 px-7 py-4 text-paper transition-colors hover:border-brass hover:text-brass"
+						>
+							Explore the exams
+						</Link>
 					</div>
 				</div>
-				<div className="border-t-2 border-line-ink">
-					<div className="mx-auto grid max-w-6xl grid-cols-2 divide-x-2 divide-line-ink px-0 md:grid-cols-4">
+				<div className="border-t border-white/15 bg-ink/70 backdrop-blur-sm">
+					<div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-white/10 md:grid-cols-4">
 						{STATS.map((s, i) => (
 							<div key={s.label} className={`rise rise-${i + 2} px-5 py-6`}>
 								<p className="display text-4xl text-brass">{s.value}</p>
-								<p className="mt-1 text-xs text-muted-ink">{s.label}</p>
+								<p className="mt-1 text-xs text-paper/70">{s.label}</p>
 							</div>
 						))}
 					</div>
@@ -113,28 +122,29 @@ export default function HomePage() {
 			</section>
 
 			{/* Career tracks */}
-			<section className="grain border-b-2 border-ink">
+			<section className="border-b border-line bg-paper">
 				<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
 					<div className="flex items-end justify-between gap-6">
-						<h2 className="display text-4xl sm:text-5xl">Choose your track</h2>
+						<div>
+							<p className="eyebrow text-signal">Where do you serve?</p>
+							<h2 className="display mt-3 text-4xl sm:text-5xl">Choose your track</h2>
+						</div>
 						<Link
 							href="/jobs"
-							className="eyebrow hidden text-signal hover:underline sm:block"
+							className="eyebrow hidden text-signal hover:text-signal-deep sm:block"
 						>
 							All openings →
 						</Link>
 					</div>
 					<div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
-						{TRACKS.map((t, i) => (
+						{TRACKS.map((t) => (
 							<Link
 								key={t.classification}
 								href={`/jobs?track=${t.classification}`}
-								className="card-lift card-lift-signal group border-2 border-ink bg-paper p-4"
+								className="card-lift group border border-line bg-paper p-5"
 							>
-								<p className="stencil-no text-3xl text-ink">
-									{String(i + 1).padStart(2, '0')}
-								</p>
-								<p className="display mt-6 text-xl leading-tight">{t.label}</p>
+								<span className="block h-1 w-8 bg-brass" aria-hidden />
+								<p className="display mt-5 text-xl leading-tight">{t.label}</p>
 								<p className="mono mt-2 text-xs text-muted">
 									{t.count} open posting{t.count === 1 ? '' : 's'}
 								</p>
@@ -145,19 +155,19 @@ export default function HomePage() {
 			</section>
 
 			{/* How it works */}
-			<section className="border-b-2 border-ink bg-paper-2">
+			<section className="border-b border-line bg-paper-2">
 				<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
 					<p className="eyebrow text-signal">How it works</p>
-					<h2 className="display mt-4 text-4xl sm:text-5xl">
+					<h2 className="display mt-3 text-4xl sm:text-5xl">
 						Built for the way hiring actually moves
 					</h2>
-					<div className="mt-12 grid gap-px border-2 border-ink bg-ink md:grid-cols-3">
+					<div className="mt-12 grid gap-4 md:grid-cols-3">
 						{STEPS.map((step, i) => (
-							<div key={step.title} className="bg-paper p-8">
-								<p className="stencil-no text-6xl text-signal">
+							<div key={step.title} className="border border-line bg-paper p-8">
+								<p className="display text-5xl text-brass">
 									{String(i + 1).padStart(2, '0')}
 								</p>
-								<h3 className="display mt-6 text-2xl">{step.title}</h3>
+								<h3 className="display mt-5 text-2xl">{step.title}</h3>
 								<p className="mt-3 text-sm leading-relaxed text-muted">{step.body}</p>
 							</div>
 						))}
@@ -166,10 +176,10 @@ export default function HomePage() {
 			</section>
 
 			{/* Exam catalog */}
-			<section className="border-b-2 border-ink">
+			<section className="border-b border-line bg-paper">
 				<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
 					<p className="eyebrow text-signal">The exams</p>
-					<h2 className="display mt-4 text-4xl sm:text-5xl">
+					<h2 className="display mt-3 text-4xl sm:text-5xl">
 						Job-built, video-based, nationally validated
 					</h2>
 					<div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -177,10 +187,12 @@ export default function HomePage() {
 							<Link
 								key={t.slug}
 								href={`/tests/${t.slug}`}
-								className="card-lift group flex flex-col border-2 border-ink bg-paper"
+								className="card-lift group flex flex-col border border-line bg-paper"
 							>
-								<div className="flex items-center justify-between border-b-2 border-ink bg-ink px-5 py-3 text-paper">
-									<span className="mono text-xs tracking-widest">{t.code}</span>
+								<div className="flex items-center justify-between bg-ink px-5 py-3 text-paper">
+									<span className="mono text-xs tracking-widest text-paper/70">
+										{t.code}
+									</span>
 									<span className="eyebrow text-brass">
 										{CLASSIFICATION_LABELS[t.classification]}
 									</span>
@@ -195,7 +207,7 @@ export default function HomePage() {
 											${t.priceUsd}{' '}
 											<span className="text-xs text-muted">/ incl. one dept</span>
 										</span>
-										<span className="text-signal group-hover:underline">
+										<span className="text-signal group-hover:text-signal-deep">
 											Details →
 										</span>
 									</div>
@@ -206,29 +218,30 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			{/* Department marquee */}
-			<section
-				className="overflow-hidden border-b-2 border-ink bg-ink py-5 text-paper"
-				aria-label="Participating departments"
-			>
-				<div className="marquee-track flex w-max gap-12">
-					{[...DEPARTMENTS, ...DEPARTMENTS].map((d, i) => (
-						<span key={`${d.slug}-${i}`} className="display whitespace-nowrap text-2xl">
-							{d.name}
-							<span className="mono ml-3 text-sm text-brass">
-								{d.city}, {d.state}
-							</span>
-							<span className="ml-12 text-signal" aria-hidden>
-								✕
-							</span>
-						</span>
-					))}
+			{/* Departments on the network — seal strip, echoes NTN's agency seals */}
+			<section className="border-b border-line bg-paper-2" aria-label="Participating departments">
+				<div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+					<p className="eyebrow text-center text-signal">
+						Trusted by departments nationwide
+					</p>
+					<div className="mt-8 grid grid-cols-4 gap-6 sm:grid-cols-8">
+						{DEPARTMENTS.map((d) => (
+							<div key={d.slug} className="flex flex-col items-center gap-2 text-center">
+								<span className="seal h-16 w-16 text-lg" title={d.name}>
+									{sealInitials(d.name)}
+								</span>
+								<span className="text-[11px] leading-tight text-muted">
+									{d.city}, {d.state}
+								</span>
+							</div>
+						))}
+					</div>
 				</div>
 			</section>
 
 			{/* Split CTA */}
 			<section className="grid md:grid-cols-2">
-				<div className="grain border-b-2 border-ink p-10 md:border-b-0 md:border-r-2 lg:p-16">
+				<div className="border-b border-line bg-paper p-10 md:border-b-0 md:border-r lg:p-16">
 					<p className="eyebrow text-signal">Candidates</p>
 					<h2 className="display mt-4 text-4xl">Your career starts with one exam</h2>
 					<p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
@@ -237,21 +250,24 @@ export default function HomePage() {
 					</p>
 					<Link
 						href="/dashboard"
-						className="eyebrow mt-8 inline-block border-2 border-ink bg-ink px-6 py-3 text-paper transition-colors hover:border-signal hover:bg-signal"
+						className="eyebrow mt-8 inline-block bg-ink px-6 py-3.5 text-paper transition-colors hover:bg-ink-2"
 					>
 						Create your account →
 					</Link>
 				</div>
-				<div className="bg-ink p-10 text-paper lg:p-16">
+				<div
+					className="hero-photo p-10 text-paper lg:p-16"
+					style={{ backgroundImage: "url('/brand/landing-04.jpg')" }}
+				>
 					<p className="eyebrow text-brass">Departments</p>
 					<h2 className="display mt-4 text-4xl">Stronger lists, faster cycles</h2>
-					<p className="mt-4 max-w-md text-sm leading-relaxed text-muted-ink">
+					<p className="mt-4 max-w-md text-sm leading-relaxed text-paper/85">
 						Continuous testing delivers ranked, pre-screened candidate lists year-round —
 						no exam logistics, no proctoring overhead, no waiting for the next cycle.
 					</p>
 					<Link
 						href="/departments"
-						className="eyebrow mt-8 inline-block border-2 border-paper px-6 py-3 transition-colors hover:bg-paper hover:text-ink"
+						className="eyebrow mt-8 inline-block bg-brass px-6 py-3.5 text-ink transition-colors hover:bg-[#c8ab14]"
 					>
 						Partner with NTN →
 					</Link>

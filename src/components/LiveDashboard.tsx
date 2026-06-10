@@ -84,7 +84,7 @@ function AuthedDashboard({
 
 export function LiveDashboard() {
 	return (
-		<div className="grain min-h-[60vh] py-8">
+		<div className="bg-paper-2 min-h-[60vh] py-8">
 			<Authenticator
 				signUpAttributes={['given_name', 'family_name']}
 				variation="modal"

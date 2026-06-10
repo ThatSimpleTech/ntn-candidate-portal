@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function TestsPage() {
 	return (
-		<div className="grain">
+		<div className="bg-paper">
 			<div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
 				<p className="eyebrow text-signal">The exam catalog</p>
 				<h1 className="display mt-4 text-5xl sm:text-6xl">
@@ -34,9 +34,9 @@ export default function TestsPage() {
 						<Link
 							key={t.slug}
 							href={`/tests/${t.slug}`}
-							className="card-lift card-lift-signal grid gap-6 border-2 border-ink bg-paper p-6 sm:grid-cols-[80px_1fr_auto] sm:items-center"
+							className="card-lift grid gap-6 border border-line bg-paper p-6 sm:grid-cols-[80px_1fr_auto] sm:items-center"
 						>
-							<span className="stencil-no hidden text-6xl text-ink sm:block">
+							<span className="display hidden text-6xl text-brass sm:block">
 								{String(i + 1).padStart(2, '0')}
 							</span>
 							<div>

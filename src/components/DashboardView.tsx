@@ -78,7 +78,7 @@ export function DashboardView({
 						<button
 							type="button"
 							onClick={onSignOut}
-							className="eyebrow border-2 border-ink px-4 py-2 transition-colors hover:bg-ink hover:text-paper"
+							className="eyebrow border border-ink px-4 py-2 transition-colors hover:bg-ink hover:text-paper"
 						>
 							Sign out
 						</button>
@@ -87,7 +87,7 @@ export function DashboardView({
 			</div>
 
 			{mode === 'demo' && (
-				<p className="mt-6 border-2 border-dashed border-brass bg-paper-2 p-4 text-sm text-muted">
+				<p className="mt-6 border border-dashed border-signal bg-paper-2 p-4 text-sm text-muted">
 					The backend isn&apos;t connected in this build, so you&apos;re seeing sample
 					data. Deployed builds gate this page behind Cognito sign-in and read your
 					applications from AppSync.
@@ -100,7 +100,7 @@ export function DashboardView({
 					<button
 						type="button"
 						onClick={() => onCreateApplication()}
-						className="eyebrow border-2 border-ink bg-signal px-5 py-3 text-paper transition-colors hover:bg-signal-deep"
+						className="eyebrow bg-brass px-5 py-3 text-ink transition-colors hover:bg-[#c8ab14]"
 					>
 						+ File demo application
 					</button>
@@ -109,15 +109,15 @@ export function DashboardView({
 
 			<div className="mt-6 space-y-4">
 				{applications.length === 0 && (
-					<p className="border-2 border-dashed border-line p-10 text-center text-sm text-muted">
+					<p className="border border-dashed border-line p-10 text-center text-sm text-muted">
 						No applications yet. File one to see the scoring pipeline in action.
 					</p>
 				)}
 				{applications.map((app) => {
 					const summary = scores[app.id];
 					return (
-						<div key={app.id} className="border-2 border-ink bg-paper">
-							<div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-ink px-5 py-4">
+						<div key={app.id} className="border border-line bg-paper">
+							<div className="flex flex-wrap items-center justify-between gap-4 border-b border-line px-5 py-4">
 								<div>
 									<p className="display text-2xl">{app.jobTitle}</p>
 									<p className="mono mt-1 text-xs text-muted">{app.departmentName}</p>
@@ -131,7 +131,7 @@ export function DashboardView({
 											type="button"
 											onClick={() => loadScores(app.id)}
 											disabled={busy === app.id}
-											className="eyebrow border-2 border-ink px-4 py-1.5 transition-colors hover:bg-ink hover:text-paper disabled:opacity-50"
+											className="eyebrow border border-ink px-4 py-1.5 transition-colors hover:bg-ink hover:text-paper disabled:opacity-50"
 										>
 											{busy === app.id ? 'Scoring...' : 'View scores'}
 										</button>
@@ -151,14 +151,14 @@ export function DashboardView({
 												</div>
 												<div className="mt-1 h-2 w-full border border-ink bg-paper-2">
 													<div
-														className="h-full bg-signal"
+														className="h-full bg-brass"
 														style={{ width: `${(s.raw / s.max) * 100}%` }}
 													/>
 												</div>
 											</div>
 										))}
 									</div>
-									<div className="border-2 border-line p-4">
+									<div className="border border-line p-4">
 										<p className="eyebrow text-signal">Overall</p>
 										<p className="display mt-2 text-5xl">
 											{summary.overall.percentile}

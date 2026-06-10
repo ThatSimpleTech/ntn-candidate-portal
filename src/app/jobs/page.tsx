@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function JobsPage() {
 	return (
-		<div className="grain">
+		<div className="bg-paper">
 			<div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
 				<p className="eyebrow text-signal">Open recruitments</p>
 				<h1 className="display mt-4 text-5xl sm:text-6xl">Find your department</h1>

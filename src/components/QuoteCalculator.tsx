@@ -65,7 +65,7 @@ export function QuoteCalculator() {
 	}, [testSlug, departments, inputKey]);
 
 	return (
-		<div className="border-2 border-ink bg-paper">
+		<div className="border border-line bg-paper">
 			<div className="flex items-center justify-between border-b-2 border-ink bg-ink px-5 py-3 text-paper">
 				<span className="eyebrow">Cost estimator</span>
 				<span
@@ -88,7 +88,7 @@ export function QuoteCalculator() {
 						id="quote-test"
 						value={testSlug}
 						onChange={(e) => setTestSlug(e.target.value)}
-						className="mono mt-2 w-full border-2 border-line bg-paper px-3 py-3 text-sm outline-none focus:border-signal"
+						className="mono mt-2 w-full border border-line bg-paper px-3 py-3 text-sm outline-none focus:border-signal"
 					>
 						{TESTS.map((t) => (
 							<option key={t.slug} value={t.slug}>
@@ -107,7 +107,7 @@ export function QuoteCalculator() {
 						max={15}
 						value={departments}
 						onChange={(e) => setDepartments(Number(e.target.value))}
-						className="mt-3 w-full accent-(--signal)"
+						className="mt-3 w-full accent-(--brass)"
 					/>
 					<p className="mt-2 text-xs text-muted">
 						Apply to {departments} department{departments === 1 ? '' : 's'} with one

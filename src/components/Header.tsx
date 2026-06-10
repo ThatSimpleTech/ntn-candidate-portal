@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -17,19 +18,17 @@ export function Header() {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<header className="sticky top-0 z-50 border-b-2 border-ink bg-paper">
-			<div className="hazard h-1.5 w-full" aria-hidden />
+		<header className="sticky top-0 z-50 bg-ink text-paper">
 			<div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
-				<Link href="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
-					<span className="flex h-9 w-9 items-center justify-center bg-ink text-paper transition-colors group-hover:bg-signal">
-						<span className="display text-lg leading-none">N</span>
-					</span>
-					<span className="leading-tight">
-						<span className="display block text-lg tracking-wide">
-							National Testing Network
-						</span>
-						<span className="eyebrow block text-signal">One test. Every department.</span>
-					</span>
+				<Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+					<Image
+						src="/brand/logo_white_letters.png"
+						alt="National Testing Network"
+						width={150}
+						height={56}
+						priority
+						className="h-11 w-auto"
+					/>
 				</Link>
 
 				<nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
@@ -40,7 +39,9 @@ export function Header() {
 								key={item.href}
 								href={item.href}
 								className={`eyebrow px-3 py-2 transition-colors ${
-									active ? 'bg-ink text-paper' : 'text-ink hover:bg-paper-2'
+									active
+										? 'text-brass'
+										: 'text-paper hover:text-brass'
 								}`}
 							>
 								{item.label}
@@ -49,7 +50,7 @@ export function Header() {
 					})}
 					<Link
 						href="/dashboard"
-						className="eyebrow ml-3 border-2 border-ink bg-signal px-4 py-2 text-paper transition-colors hover:bg-signal-deep"
+						className="eyebrow ml-3 bg-brass px-4 py-2.5 text-ink transition-colors hover:bg-[#c8ab14]"
 					>
 						Candidate Login
 					</Link>
@@ -57,31 +58,29 @@ export function Header() {
 
 				<button
 					type="button"
-					className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border-2 border-ink lg:hidden"
+					className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border border-line-ink lg:hidden"
 					aria-expanded={open}
 					aria-label="Toggle navigation"
 					onClick={() => setOpen((v) => !v)}
 				>
 					<span
-						className={`h-0.5 w-5 bg-ink transition-transform ${open ? 'translate-y-1 rotate-45' : ''}`}
+						className={`h-0.5 w-5 bg-paper transition-transform ${open ? 'translate-y-1 rotate-45' : ''}`}
 					/>
-					<span className={`h-0.5 w-5 bg-ink transition-opacity ${open ? 'opacity-0' : ''}`} />
+					<span className={`h-0.5 w-5 bg-paper transition-opacity ${open ? 'opacity-0' : ''}`} />
 					<span
-						className={`h-0.5 w-5 bg-ink transition-transform ${open ? '-translate-y-1 -rotate-45' : ''}`}
+						className={`h-0.5 w-5 bg-paper transition-transform ${open ? '-translate-y-1 -rotate-45' : ''}`}
 					/>
 				</button>
 			</div>
+			<div className="gold-rule h-0.5 w-full" aria-hidden />
 
 			{open && (
-				<nav
-					className="border-t-2 border-ink bg-paper px-4 pb-4 lg:hidden"
-					aria-label="Mobile"
-				>
+				<nav className="border-t border-line-ink bg-ink px-4 pb-4 lg:hidden" aria-label="Mobile">
 					{NAV.map((item) => (
 						<Link
 							key={item.href}
 							href={item.href}
-							className="eyebrow block border-b border-line py-3"
+							className="eyebrow block border-b border-line-ink py-3 text-paper"
 							onClick={() => setOpen(false)}
 						>
 							{item.label}
@@ -89,7 +88,7 @@ export function Header() {
 					))}
 					<Link
 						href="/dashboard"
-						className="eyebrow mt-3 block border-2 border-ink bg-signal px-4 py-3 text-center text-paper"
+						className="eyebrow mt-3 block bg-brass px-4 py-3 text-center text-ink"
 						onClick={() => setOpen(false)}
 					>
 						Candidate Login

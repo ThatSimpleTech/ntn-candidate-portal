@@ -42,7 +42,7 @@ export function JobBoard({ jobs, departments }: Props) {
 
 	return (
 		<div>
-			<div className="flex flex-col gap-4 border-2 border-ink bg-paper p-4 sm:flex-row sm:items-center">
+			<div className="flex flex-col gap-4 border border-line bg-paper p-4 sm:flex-row sm:items-center">
 				<label className="flex-1">
 					<span className="sr-only">Search jobs</span>
 					<input
@@ -50,7 +50,7 @@ export function JobBoard({ jobs, departments }: Props) {
 						placeholder="Search title, department, or city..."
 						value={query}
 						onChange={(e) => setQuery(e.target.value)}
-						className="mono w-full border-2 border-line bg-paper px-4 py-3 text-sm outline-none transition-colors focus:border-signal"
+						className="mono w-full border border-line bg-paper px-4 py-3 text-sm outline-none transition-colors focus:border-signal"
 					/>
 				</label>
 				<div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by track">
@@ -89,7 +89,7 @@ export function JobBoard({ jobs, departments }: Props) {
 						<li key={job.slug}>
 							<Link
 								href={`/jobs/${job.slug}`}
-								className="card-lift card-lift-signal grid gap-4 border-2 border-ink bg-paper p-5 sm:grid-cols-[1fr_auto] sm:items-center"
+								className="card-lift grid gap-4 border border-line bg-paper p-5 sm:grid-cols-[1fr_auto] sm:items-center"
 							>
 								<div>
 									<div className="flex flex-wrap items-center gap-3">
@@ -114,7 +114,7 @@ export function JobBoard({ jobs, departments }: Props) {
 					);
 				})}
 				{visible.length === 0 && (
-					<li className="border-2 border-dashed border-line p-10 text-center text-sm text-muted">
+					<li className="border border-dashed border-line p-10 text-center text-sm text-muted">
 						No openings match that filter right now. New recruitments post weekly —
 						check back soon.
 					</li>

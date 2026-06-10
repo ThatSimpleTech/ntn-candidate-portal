@@ -25,7 +25,7 @@ const faqJsonLd = {
 
 export default function FaqPage() {
 	return (
-		<div className="grain">
+		<div className="bg-paper">
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{
@@ -39,7 +39,7 @@ export default function FaqPage() {
 					{FAQS.map((f, i) => (
 						<details
 							key={f.question}
-							className="group border-2 border-ink bg-paper open:shadow-[6px_6px_0_0_var(--ink)]"
+							className="group border border-line bg-paper open:shadow-[6px_6px_0_0_var(--ink)]"
 							open={i === 0}
 						>
 							<summary className="flex cursor-pointer list-none items-baseline gap-4 p-5">

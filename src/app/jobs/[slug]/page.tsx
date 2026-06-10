@@ -81,7 +81,7 @@ export default async function JobPage({ params }: Props) {
 			/>
 
 			<header className="border-b-2 border-ink bg-ink text-paper">
-				<div className="blueprint">
+				<div>
 					<div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
 						<nav className="eyebrow text-muted-ink" aria-label="Breadcrumb">
 							<Link href="/jobs" className="hover:text-brass">
@@ -134,8 +134,8 @@ export default async function JobPage({ params }: Props) {
 				</div>
 
 				<aside>
-					<div className="sticky top-24 border-2 border-ink bg-paper">
-						<div className="hazard h-1.5 w-full" aria-hidden />
+					<div className="sticky top-24 border border-line bg-paper">
+						<div className="gold-rule h-1 w-full" aria-hidden />
 						<div className="p-6">
 							<p className="eyebrow text-signal">How to apply</p>
 							<ol className="mt-4 space-y-4 text-sm leading-relaxed">
@@ -154,14 +154,14 @@ export default async function JobPage({ params }: Props) {
 							</ol>
 							<Link
 								href="/dashboard"
-								className="eyebrow mt-6 block border-2 border-ink bg-signal px-5 py-3 text-center text-paper transition-colors hover:bg-signal-deep"
+								className="eyebrow mt-6 block bg-brass px-5 py-3 text-center text-ink transition-colors hover:bg-[#c8ab14]"
 							>
 								Start application →
 							</Link>
 							{test && (
 								<Link
 									href={`/tests/${test.slug}`}
-									className="eyebrow mt-3 block border-2 border-ink px-5 py-3 text-center transition-colors hover:bg-paper-2"
+									className="eyebrow mt-3 block border border-ink px-5 py-3 text-center transition-colors hover:bg-paper-2"
 								>
 									About the {test.name}
 								</Link>

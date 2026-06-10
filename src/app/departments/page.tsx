@@ -37,8 +37,8 @@ const VALUE_PROPS = [
 export default function DepartmentsPage() {
 	return (
 		<div>
-			<section className="border-b-2 border-ink bg-ink text-paper">
-				<div className="blueprint">
+			<section className="hero-photo text-paper" style={{ backgroundImage: "url('/brand/landing-02.jpg')" }}>
+				<div>
 					<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
 						<p className="eyebrow text-brass">For departments & agencies</p>
 						<h1 className="display mt-6 max-w-3xl text-5xl sm:text-7xl">
@@ -58,12 +58,12 @@ export default function DepartmentsPage() {
 				</div>
 			</section>
 
-			<section className="grain border-b-2 border-ink">
+			<section className="border-b border-line bg-paper">
 				<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-					<div className="grid gap-px border-2 border-ink bg-ink md:grid-cols-2">
+					<div className="grid gap-4 md:grid-cols-2">
 						{VALUE_PROPS.map((v, i) => (
-							<div key={v.title} className="bg-paper p-8">
-								<p className="stencil-no text-5xl text-signal">
+							<div key={v.title} className="border border-line bg-paper p-8">
+								<p className="display text-5xl text-brass">
 									{String(i + 1).padStart(2, '0')}
 								</p>
 								<h2 className="display mt-5 text-2xl">{v.title}</h2>
@@ -80,7 +80,7 @@ export default function DepartmentsPage() {
 					<h2 className="display mt-4 text-4xl">Departments on the network</h2>
 					<div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
 						{DEPARTMENTS.map((d) => (
-							<div key={d.slug} className="border-2 border-ink bg-paper p-5">
+							<div key={d.slug} className="border border-line bg-paper p-5">
 								<p className="display text-xl leading-tight">{d.name}</p>
 								<p className="mono mt-2 text-xs text-muted">
 									{d.city}, {d.state}
