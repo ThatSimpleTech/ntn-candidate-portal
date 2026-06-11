@@ -80,7 +80,7 @@ export default async function JobPage({ params }: Props) {
 				}}
 			/>
 
-			<header className="border-b-2 border-ink bg-ink text-paper">
+			<header className="ink-tex border-b-2 border-brass/60 text-paper">
 				<div>
 					<div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
 						<nav className="eyebrow text-muted-ink" aria-label="Breadcrumb">
@@ -134,7 +134,7 @@ export default async function JobPage({ params }: Props) {
 				</div>
 
 				<aside>
-					<div className="sticky top-24 border border-line bg-paper">
+					<div className="card-static sticky top-24 border border-line">
 						<div className="gold-rule h-1 w-full" aria-hidden />
 						<div className="p-6">
 							<p className="eyebrow text-signal">How to apply</p>

@@ -23,6 +23,7 @@ export default function TestsPage() {
 				<h1 className="display mt-4 text-5xl sm:text-6xl">
 					Tests built from the job itself
 				</h1>
+				<span className="heading-rule in mt-5" aria-hidden />
 				<p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
 					Every NTN exam is developed by the industrial-organizational psychologists at
 					Ergometrics using video scenarios drawn from real incidents. No trivia, no
@@ -36,7 +37,7 @@ export default function TestsPage() {
 							href={`/tests/${t.slug}`}
 							className="card-lift grid gap-6 border border-line bg-paper p-6 sm:grid-cols-[80px_1fr_auto] sm:items-center"
 						>
-							<span className="display hidden text-6xl text-brass sm:block">
+							<span className="display gold-emboss hidden text-6xl sm:block">
 								{String(i + 1).padStart(2, '0')}
 							</span>
 							<div>

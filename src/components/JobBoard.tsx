@@ -42,7 +42,7 @@ export function JobBoard({ jobs, departments }: Props) {
 
 	return (
 		<div>
-			<div className="flex flex-col gap-4 border border-line bg-paper p-4 sm:flex-row sm:items-center">
+			<div className="card-static flex flex-col gap-4 border border-line p-4 sm:flex-row sm:items-center">
 				<label className="flex-1">
 					<span className="sr-only">Search jobs</span>
 					<input
@@ -57,8 +57,10 @@ export function JobBoard({ jobs, departments }: Props) {
 					<button
 						type="button"
 						onClick={() => setTrack('ALL')}
-						className={`eyebrow px-3 py-2 transition-colors ${
-							track === 'ALL' ? 'bg-ink text-paper' : 'border border-line hover:bg-paper-2'
+						className={`eyebrow px-3 py-2 transition-all ${
+							track === 'ALL'
+								? 'bg-ink text-paper shadow-[inset_0_-2px_0_0_var(--brass)]'
+								: 'border border-line hover:border-brass hover:text-signal'
 						}`}
 					>
 						All
@@ -68,8 +70,10 @@ export function JobBoard({ jobs, departments }: Props) {
 							key={c}
 							type="button"
 							onClick={() => setTrack(c)}
-							className={`eyebrow px-3 py-2 transition-colors ${
-								track === c ? 'bg-ink text-paper' : 'border border-line hover:bg-paper-2'
+							className={`eyebrow px-3 py-2 transition-all ${
+								track === c
+									? 'bg-ink text-paper shadow-[inset_0_-2px_0_0_var(--brass)]'
+									: 'border border-line hover:border-brass hover:text-signal'
 							}`}
 						>
 							{CLASSIFICATION_LABELS[c]}

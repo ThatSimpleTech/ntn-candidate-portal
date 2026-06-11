@@ -7,6 +7,11 @@
  * ceremonial motion. No terminal/mono UI chrome.
  * Display: Barlow Condensed (matches NTN's condensed uppercase headlines).
  * Body: Public Sans.
+ *
+ * Depth language: light falls from above. Surfaces carry a faint top
+ * highlight, layered ambient + key shadows, and machined gold bezels on
+ * focus/hover. Dark grounds are never dead black — they carry engraved
+ * contour arcs and a warm gold atmosphere.
  */
 
 :root {
@@ -21,6 +26,7 @@
   --muted-on-ink: #bdbdbd;
   --line: #e4e3df;
   --line-on-ink: #3a3a3a;
+  interpolate-size: allow-keywords;
 }
 
 @theme inline {
@@ -93,8 +99,20 @@ body {
   color: transparent;
 }
 
-/* Primary action: brushed-gold button with a machined bevel */
+/* Foil numerals on light grounds: deeper grade + a cast shadow so they
+   read as stamped metal instead of flat yellow text */
+.gold-emboss {
+  background: linear-gradient(170deg, #e9d041 0%, #c9ad16 45%, #8f7a10 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 1px rgba(24, 24, 24, 0.22));
+}
+
+/* Primary action: brushed-gold button with a machined bevel + light sweep */
 .btn-gold {
+  position: relative;
+  overflow: hidden;
   display: inline-block;
   color: var(--ink);
   background: linear-gradient(180deg, #e9d041 0%, #d3ba1d 55%, #c4ac15 100%);
@@ -105,13 +123,32 @@ body {
   transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
+.btn-gold::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 62%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .btn-gold:hover {
   filter: brightness(1.05);
   transform: translateY(-1px);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.5),
     inset 0 -1px 0 rgba(0, 0, 0, 0.16),
-    0 6px 16px -6px rgba(0, 0, 0, 0.45);
+    0 8px 20px -6px rgba(0, 0, 0, 0.5);
+}
+
+.btn-gold:hover::after {
+  transform: translateX(130%);
 }
 
 .btn-gold:active {
@@ -119,9 +156,87 @@ body {
   filter: brightness(0.98);
 }
 
+/* ---- Atmospheric grounds ---- */
+
+/* Engraved charcoal: concentric guilloché arcs + warm gold atmosphere so
+   dark sections carry depth instead of flat #181818 */
+.ink-tex {
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 90% 70% at 85% -15%, rgba(216, 189, 34, 0.10), transparent 60%),
+    radial-gradient(ellipse 70% 55% at 8% 115%, rgba(216, 189, 34, 0.06), transparent 60%),
+    repeating-radial-gradient(
+      circle at 50% -80%,
+      transparent 0 139px,
+      rgba(216, 189, 34, 0.045) 139px 140px
+    );
+}
+
+/* Faint paper grain for light sections */
+.paper-tex {
+  background-color: var(--paper-2);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 255, 255, 0.9), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+
+/* Smoked glass: blurred charcoal strip for content mounted over photography */
+.glass-ink {
+  background: rgba(18, 18, 18, 0.88);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  backdrop-filter: blur(16px) saturate(1.3);
+  border: 1px solid rgba(216, 189, 34, 0.30);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 32px 64px -28px rgba(0, 0, 0, 0.65);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-ink {
+    background: rgba(18, 18, 18, 0.96);
+  }
+}
+
+/* Sticky header: smoked glass over whatever scrolls beneath it */
+.header-glass {
+  background: rgba(18, 18, 18, 0.82);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .header-glass {
+    background: rgba(18, 18, 18, 0.97);
+  }
+}
+
+/* Primary nav: gold rule draws under the hovered/active item */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.3rem;
+  height: 2px;
+  background: linear-gradient(90deg, #e6cc3b, #b69d14);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after,
+.nav-link[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
 /* ---- Photography ---- */
 
-/* Cinematic photo section: charcoal-to-transparent grade + warm gold cast */
+/* Cinematic photo section: charcoal-to-transparent grade + warm gold cast,
+   finished with a vignette and film grain so the image reads graded, not flat */
 .hero-photo {
   position: relative;
   overflow: hidden;
@@ -151,6 +266,18 @@ body {
     linear-gradient(rgba(208, 184, 32, 0.07), rgba(208, 184, 32, 0.07));
 }
 
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 130% 100% at 50% 28%, transparent 55%, rgba(8, 8, 8, 0.5) 100%),
+    linear-gradient(180deg, rgba(8, 8, 8, 0.38) 0%, transparent 16%, transparent 72%, rgba(8, 8, 8, 0.5) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
 .hero-photo > *:not(.hero-img) {
   position: relative;
   z-index: 2;
@@ -165,6 +292,16 @@ body {
 .kenburns {
   animation: kenburns 24s ease-out forwards;
   transform-origin: 60% 40%;
+}
+
+/* Scroll invitation at the hero's foot */
+@keyframes cue-drift {
+  0%, 100% { transform: translateY(0); opacity: 0.85; }
+  50% { transform: translateY(7px); opacity: 0.35; }
+}
+
+.scroll-cue {
+  animation: cue-drift 2.4s ease-in-out infinite;
 }
 
 /* ---- Ceremonial motion ---- */
@@ -221,7 +358,8 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .rise,
-  .kenburns {
+  .kenburns,
+  .scroll-cue {
     animation: none;
   }
   .reveal {
@@ -346,21 +484,241 @@ body {
 
 /* ---- Surfaces ---- */
 
-/* Letterpress card: layered ambient + key shadow, gold cue on hover */
+/* Letterpress card, interactive: top-lit gradient face, layered ambient +
+   key shadows, machined gold bezel and a light sweep on hover */
 .card-lift {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(180deg, #ffffff 0%, #fbfaf6 100%);
   box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
     0 1px 2px rgba(24, 24, 24, 0.05),
-    0 4px 12px -6px rgba(24, 24, 24, 0.08);
+    0 8px 20px -10px rgba(24, 24, 24, 0.12);
   transition:
-    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.card-lift::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(216, 189, 34, 0.10) 47%,
+    rgba(255, 255, 255, 0.22) 52%,
+    transparent 65%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-lift:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: var(--brass);
   box-shadow:
-    0 2px 4px rgba(24, 24, 24, 0.06),
-    0 18px 36px -16px rgba(24, 24, 24, 0.28);
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 0 0 1px var(--brass),
+    0 2px 6px rgba(24, 24, 24, 0.07),
+    0 26px 48px -20px rgba(24, 24, 24, 0.32);
+}
+
+.card-lift:hover::after {
+  transform: translateX(130%);
+}
+
+/* Letterpress card, static: same material without the interaction cues */
+.card-static {
+  background-image: linear-gradient(180deg, #ffffff 0%, #fbfaf6 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 1px 2px rgba(24, 24, 24, 0.05),
+    0 8px 20px -10px rgba(24, 24, 24, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-lift,
+  .card-lift::after,
+  .btn-gold::after {
+    transition: none;
+  }
+}
+
+/* ---- FAQ accordion: engraved file drawer ---- */
+
+.faq-card {
+  border-left: 3px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-card[open] {
+  border-left-color: var(--brass);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 2px 6px rgba(24, 24, 24, 0.06),
+    0 20px 40px -22px rgba(24, 24, 24, 0.3);
+}
+
+/* Smooth open/close where the browser supports animating to auto
+   (interpolate-size); elsewhere it degrades to an instant toggle */
+.faq-card::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    content-visibility 0.45s allow-discrete;
+}
+
+.faq-card[open]::details-content {
+  block-size: auto;
+}
+
+.faq-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.75rem;
+  width: 1.75rem;
+  flex: none;
+  border-radius: 9999px;
+  border: 1px solid var(--line);
+  color: var(--signal);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease;
+}
+
+.faq-card[open] .faq-toggle {
+  transform: rotate(45deg);
+  border-color: var(--brass);
+  background: linear-gradient(180deg, #f4e684, #e9d041);
+  color: var(--ink);
+}
+
+/* ---- Amplify Authenticator: dressed in the brand ---- */
+
+[data-amplify-authenticator] {
+  --amplify-components-fieldcontrol-border-radius: 0;
+  --amplify-components-button-border-radius: 0;
+  --amplify-components-authenticator-router-box-shadow: none;
+  --amplify-fonts-default-variable: var(--font-public-sans), system-ui, sans-serif;
+  --amplify-fonts-default-static: var(--font-public-sans), system-ui, sans-serif;
+}
+
+[data-amplify-authenticator] [data-amplify-router] {
+  border: 1px solid rgba(216, 189, 34, 0.35);
+  border-top: 3px solid var(--brass);
+  background:
+    linear-gradient(180deg, #ffffff 0%, #fbfaf6 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 40px 80px -32px rgba(0, 0, 0, 0.7);
+}
+
+[data-amplify-authenticator] .amplify-tabs__list {
+  border-color: var(--line);
+}
+
+[data-amplify-authenticator] .amplify-tabs__item {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 1.2rem;
+  color: var(--muted);
+  border-color: transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+[data-amplify-authenticator] .amplify-tabs__item:hover {
+  color: var(--signal);
+}
+
+[data-amplify-authenticator] .amplify-tabs__item--active {
+  color: var(--ink);
+  border-color: var(--brass);
+}
+
+[data-amplify-authenticator] .amplify-label {
+  font-family: var(--font-public-sans), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-2);
+}
+
+[data-amplify-authenticator] .amplify-input,
+[data-amplify-authenticator] .amplify-select {
+  border-color: var(--line);
+  background: var(--paper);
+  font-family: var(--font-public-sans), system-ui, sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+[data-amplify-authenticator] .amplify-input:focus,
+[data-amplify-authenticator] .amplify-select:focus {
+  border-color: var(--signal);
+  box-shadow: 0 0 0 1px var(--signal);
+}
+
+[data-amplify-authenticator] .amplify-field__show-password {
+  border-color: var(--line);
+  color: var(--muted);
+}
+
+[data-amplify-authenticator] .amplify-button--primary {
+  background: linear-gradient(180deg, #e9d041 0%, #d3ba1d 55%, #c4ac15 100%);
+  color: var(--ink);
+  font-family: var(--font-public-sans), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16),
+    0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: filter 0.18s ease, transform 0.18s ease;
+}
+
+[data-amplify-authenticator] .amplify-button--primary:hover {
+  background: linear-gradient(180deg, #e9d041 0%, #d3ba1d 55%, #c4ac15 100%);
+  color: var(--ink);
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+[data-amplify-authenticator] .amplify-button--link {
+  color: var(--signal);
+  font-weight: 600;
+}
+
+[data-amplify-authenticator] .amplify-button--link:hover {
+  background: transparent;
+  color: var(--signal-deep);
+}
+
+/* Pre-auth only (the Authenticator UI is unmounted once signed in):
+   mount the sign-in card on an engraved charcoal stage */
+.auth-shell:has([data-amplify-authenticator]) {
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 90% 70% at 85% -15%, rgba(216, 189, 34, 0.10), transparent 60%),
+    radial-gradient(ellipse 70% 55% at 8% 115%, rgba(216, 189, 34, 0.06), transparent 60%),
+    repeating-radial-gradient(
+      circle at 50% -80%,
+      transparent 0 139px,
+      rgba(216, 189, 34, 0.045) 139px 140px
+    );
+  padding: 5rem 1rem 6rem;
+}
+
+.auth-shell .auth-intro {
+  display: none;
+}
+
+.auth-shell:has([data-amplify-authenticator]) .auth-intro {
+  display: block;
 }

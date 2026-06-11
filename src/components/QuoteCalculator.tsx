@@ -65,8 +65,8 @@ export function QuoteCalculator() {
 	}, [testSlug, departments, inputKey]);
 
 	return (
-		<div className="border border-line bg-paper">
-			<div className="flex items-center justify-between border-b-2 border-ink bg-ink px-5 py-3 text-paper">
+		<div className="card-static border border-line">
+			<div className="ink-tex flex items-center justify-between border-b-2 border-ink px-5 py-3 text-paper">
 				<span className="eyebrow">Cost estimator</span>
 				<span
 					className={`mono text-xs ${quote.source === 'live' ? 'text-brass' : 'text-muted-ink'}`}
@@ -125,7 +125,7 @@ export function QuoteCalculator() {
 					</dl>
 					<div className="mt-5 flex items-baseline justify-between border-t-2 border-ink pt-4">
 						<span className="eyebrow">Total</span>
-						<span className="mono text-3xl">${quote.total.toFixed(2)}</span>
+						<span className="display gold-emboss text-4xl">${quote.total.toFixed(2)}</span>
 					</div>
 					<p className="mt-3 text-xs text-muted">
 						Department-specific fees (if any) are itemized at checkout before payment.

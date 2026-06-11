@@ -24,16 +24,17 @@ export default function PricingPage() {
 				<h1 className="display mt-4 text-5xl sm:text-6xl">
 					No surprises at checkout
 				</h1>
+				<span className="heading-rule in mt-5" aria-hidden />
 				<p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
 					Every exam fee includes score delivery to one department. Add as many more as
 					you want — at testing time or months later — for a flat $12 each. Fee waivers
 					are available for candidates with financial need.
 				</p>
 
-				<div className="mt-12 overflow-x-auto border border-line">
-					<table className="w-full min-w-[640px] border-collapse bg-paper text-left text-sm">
+				<div className="card-static mt-12 overflow-x-auto border border-line">
+					<table className="w-full min-w-[640px] border-collapse text-left text-sm">
 						<thead>
-							<tr className="bg-ink text-paper">
+							<tr className="ink-tex text-paper">
 								<th className="eyebrow px-5 py-4">Exam</th>
 								<th className="eyebrow px-5 py-4">Track</th>
 								<th className="eyebrow px-5 py-4">Duration</th>
@@ -68,15 +69,15 @@ export default function PricingPage() {
 				<div className="mt-12 grid gap-8 lg:grid-cols-[1fr_400px]">
 					<QuoteCalculator />
 					<div className="space-y-4">
-						<div className="border border-line bg-paper p-6">
+						<div className="card-static border border-line p-6">
 							<p className="eyebrow text-signal">Score transfers</p>
-							<p className="mono mt-3 text-3xl">$12</p>
+							<p className="display gold-emboss mt-3 text-5xl">$12</p>
 							<p className="mt-2 text-sm leading-relaxed text-muted">
 								Already tested? Send your existing scores to any additional
 								participating department — no retest, valid for 12 months.
 							</p>
 						</div>
-						<div className="border border-line bg-paper p-6">
+						<div className="card-static border border-line p-6">
 							<p className="eyebrow text-signal">Fee waivers</p>
 							<p className="mt-3 text-sm leading-relaxed text-muted">
 								Financial need shouldn&apos;t end a public safety career before it
@@ -84,7 +85,7 @@ export default function PricingPage() {
 								review it within two business days.
 							</p>
 						</div>
-						<div className="border border-line bg-paper p-6">
+						<div className="card-static border border-line p-6">
 							<p className="eyebrow text-signal">Retakes</p>
 							<p className="mt-3 text-sm leading-relaxed text-muted">
 								Retest after a 90-day waiting period. Your most recent score is the

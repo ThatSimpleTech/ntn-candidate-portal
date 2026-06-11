@@ -64,8 +64,8 @@ export default function DepartmentsPage() {
 				<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
 					<div className="grid gap-4 md:grid-cols-2">
 						{VALUE_PROPS.map((v, i) => (
-							<div key={v.title} className="border border-line bg-paper p-8">
-								<p className="display text-5xl text-brass">
+							<div key={v.title} className="card-static border border-line p-8">
+								<p className="display gold-emboss text-6xl">
 									{String(i + 1).padStart(2, '0')}
 								</p>
 								<h2 className="display mt-5 text-2xl">{v.title}</h2>
@@ -76,13 +76,14 @@ export default function DepartmentsPage() {
 				</div>
 			</section>
 
-			<section className="border-b-2 border-ink bg-paper-2">
+			<section className="paper-tex border-b-2 border-ink">
 				<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
 					<p className="eyebrow text-signal">Currently recruiting through NTN</p>
 					<h2 className="display mt-4 text-4xl">Departments on the network</h2>
+					<span className="heading-rule in mt-4" aria-hidden />
 					<div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
 						{DEPARTMENTS.map((d) => (
-							<div key={d.slug} className="border border-line bg-paper p-5">
+							<div key={d.slug} className="card-static border border-line p-5">
 								<p className="display text-xl leading-tight">{d.name}</p>
 								<p className="mono mt-2 text-xs text-muted">
 									{d.city}, {d.state}

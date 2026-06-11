@@ -64,7 +64,7 @@ export default async function TestPage({ params }: Props) {
 				}}
 			/>
 
-			<header className="border-b-2 border-ink bg-ink text-paper">
+			<header className="ink-tex border-b-2 border-brass/60 text-paper">
 				<div>
 					<div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
 						<nav className="eyebrow text-muted-ink" aria-label="Breadcrumb">
@@ -79,8 +79,8 @@ export default async function TestPage({ params }: Props) {
 								<h1 className="display mt-2 text-6xl sm:text-7xl">{test.name}</h1>
 								<p className="mt-4 max-w-xl text-muted-ink">{test.audience}</p>
 							</div>
-							<div className="border border-brass bg-ink/60 p-5 text-right">
-								<p className="mono text-4xl">${test.priceUsd}</p>
+							<div className="glass-ink p-5 text-right">
+								<p className="display gold-text text-5xl">${test.priceUsd}</p>
 								<p className="mono mt-1 text-xs text-muted-ink">
 									includes one department
 								</p>
@@ -103,7 +103,7 @@ export default async function TestPage({ params }: Props) {
 				<h2 className="display mt-14 text-4xl">What the exam covers</h2>
 				<div className="mt-8 grid gap-4 md:grid-cols-2">
 					{test.sections.map((s, i) => (
-						<div key={s.name} className="border border-line bg-paper p-6">
+						<div key={s.name} className="card-static border border-line p-6">
 							<p className="mono text-xs text-signal">
 								SECTION {String(i + 1).padStart(2, '0')}
 							</p>
@@ -142,7 +142,7 @@ export default async function TestPage({ params }: Props) {
 					</>
 				)}
 
-				<div className="mt-14 border border-line bg-paper-2 p-8 text-center">
+				<div className="paper-tex mt-14 border border-line p-8 text-center shadow-[0_20px_40px_-24px_rgba(24,24,24,0.3)]">
 					<h2 className="display text-3xl">Ready to schedule?</h2>
 					<p className="mx-auto mt-3 max-w-md text-sm text-muted">
 						Create your account, pick a date, and choose your departments. Most
