@@ -109,11 +109,11 @@ export function JobBoard({ jobs, departments }: Props) {
 									</span>
 								</span>
 								<span className="text-right">
-									<span className="mono block text-sm transition-colors duration-500 group-hover:text-brass sm:text-base">
-										{job.salary}
-									</span>
-									<span className="mono mt-0.5 block text-[0.65rem] text-muted transition-colors duration-500 group-hover:text-paper/60">
+									<span className="mono block text-xs text-muted transition-colors duration-500 group-hover:text-paper/60">
 										closes {job.closingDate}
+									</span>
+									<span className="eyebrow mt-1 block text-signal transition-colors duration-500 group-hover:text-brass">
+										View posting →
 									</span>
 								</span>
 							</Link>

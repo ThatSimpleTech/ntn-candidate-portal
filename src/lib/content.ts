@@ -193,7 +193,6 @@ export interface Department {
 	state: string;
 	classification: Classification;
 	summary: string;
-	salaryRange: string;
 }
 
 export const DEPARTMENTS: Department[] = [
@@ -205,7 +204,6 @@ export const DEPARTMENTS: Department[] = [
 		classification: 'FIREFIGHTER',
 		summary:
 			'Career department covering 110 square miles of urban and wildland interface with 12 stations and an ISO Class 2 rating.',
-		salaryRange: '$74,200 - $98,600',
 	},
 	{
 		slug: 'lakeview-police',
@@ -215,7 +213,6 @@ export const DEPARTMENTS: Department[] = [
 		classification: 'LAW_ENFORCEMENT',
 		summary:
 			'Accredited municipal agency of 210 sworn officers with dedicated traffic, K-9, and community policing units.',
-		salaryRange: '$68,500 - $94,300',
 	},
 	{
 		slug: 'tri-county-ecc',
@@ -225,7 +222,6 @@ export const DEPARTMENTS: Department[] = [
 		classification: 'DISPATCH',
 		summary:
 			'Consolidated 911 center answering 480,000 calls a year for fire, police, and EMS across three counties.',
-		salaryRange: '$54,800 - $76,100',
 	},
 	{
 		slug: 'high-plains-corrections',
@@ -235,7 +231,6 @@ export const DEPARTMENTS: Department[] = [
 		classification: 'CORRECTIONS',
 		summary:
 			'State corrections bureau operating four adult facilities with direct-supervision pods and re-entry programs.',
-		salaryRange: '$49,900 - $67,400',
 	},
 	{
 		slug: 'gulf-coast-ems',
@@ -245,7 +240,6 @@ export const DEPARTMENTS: Department[] = [
 		classification: 'EMS',
 		summary:
 			'Regional EMS authority running 28 ambulances across two counties with a nationally recognized cardiac care program.',
-		salaryRange: '$46,200 - $71,800',
 	},
 	{
 		slug: 'birmingham-metro-fire',
@@ -255,7 +249,6 @@ export const DEPARTMENTS: Department[] = [
 		classification: 'FIREFIGHTER',
 		summary:
 			'Metro district protecting 420,000 residents with 31 companies, heavy rescue, and hazmat response.',
-		salaryRange: '$52,700 - $79,900',
 	},
 	{
 		slug: 'sound-transit-safety',
@@ -265,7 +258,6 @@ export const DEPARTMENTS: Department[] = [
 		classification: 'TRANSIT',
 		summary:
 			'Transit safety division covering light rail and bus rapid transit across the metro corridor.',
-		salaryRange: '$61,000 - $83,500',
 	},
 	{
 		slug: 'front-range-911',
@@ -275,7 +267,6 @@ export const DEPARTMENTS: Department[] = [
 		classification: 'DISPATCH',
 		summary:
 			'Next-gen 911 center with text-to-911, integrated CAD, and a four-week academy for new telecommunicators.',
-		salaryRange: '$51,300 - $72,600',
 	},
 ];
 
@@ -285,7 +276,6 @@ export interface JobPosting {
 	departmentSlug: string;
 	classification: Classification;
 	testProductSlug: string;
-	salary: string;
 	location: string;
 	closingDate: string;
 	description: string;
@@ -299,7 +289,6 @@ export const JOBS: JobPosting[] = [
 		departmentSlug: 'cascade-fire-rescue',
 		classification: 'FIREFIGHTER',
 		testProductSlug: 'fireteam',
-		salary: '$74,200 - $98,600',
 		location: 'Everett, WA',
 		closingDate: '2026-08-14',
 		description:
@@ -318,11 +307,10 @@ export const JOBS: JobPosting[] = [
 		departmentSlug: 'cascade-fire-rescue',
 		classification: 'FIREFIGHTER',
 		testProductSlug: 'fireteam',
-		salary: '$82,900 - $107,200',
 		location: 'Everett, WA',
 		closingDate: '2026-07-31',
 		description:
-			'Firefighter/paramedic position with ALS response duties. $10,000 hiring incentive for currently licensed paramedics.',
+			'Firefighter/paramedic position with ALS response duties.',
 		requirements: [
 			'State paramedic license',
 			'FireTEAM score on file within 12 months',
@@ -335,7 +323,6 @@ export const JOBS: JobPosting[] = [
 		departmentSlug: 'lakeview-police',
 		classification: 'LAW_ENFORCEMENT',
 		testProductSlug: 'frontline-national',
-		salary: '$68,500 - $94,300',
 		location: 'Lakewood, CO',
 		closingDate: '2026-09-01',
 		description:
@@ -353,7 +340,6 @@ export const JOBS: JobPosting[] = [
 		departmentSlug: 'lakeview-police',
 		classification: 'LAW_ENFORCEMENT',
 		testProductSlug: 'frontline-national',
-		salary: '$78,100 - $94,300',
 		location: 'Lakewood, CO',
 		closingDate: '2026-12-31',
 		description:
@@ -370,7 +356,6 @@ export const JOBS: JobPosting[] = [
 		departmentSlug: 'tri-county-ecc',
 		classification: 'DISPATCH',
 		testProductSlug: 'ecomm-national',
-		salary: '$54,800 - $76,100',
 		location: 'Vancouver, WA',
 		closingDate: '2026-07-20',
 		description:
@@ -387,7 +372,6 @@ export const JOBS: JobPosting[] = [
 		departmentSlug: 'front-range-911',
 		classification: 'DISPATCH',
 		testProductSlug: 'ecomm-national',
-		salary: '$51,300 - $72,600',
 		location: 'Fort Collins, CO',
 		closingDate: '2026-08-05',
 		description:
@@ -404,7 +388,6 @@ export const JOBS: JobPosting[] = [
 		departmentSlug: 'high-plains-corrections',
 		classification: 'CORRECTIONS',
 		testProductSlug: 'react',
-		salary: '$49,900 - $67,400',
 		location: 'Cheyenne, WY',
 		closingDate: '2026-08-28',
 		description:
@@ -421,7 +404,6 @@ export const JOBS: JobPosting[] = [
 		departmentSlug: 'gulf-coast-ems',
 		classification: 'EMS',
 		testProductSlug: 'medicteam',
-		salary: '$46,200 - $58,900',
 		location: 'Mobile, AL',
 		closingDate: '2026-07-15',
 		description:
@@ -438,11 +420,10 @@ export const JOBS: JobPosting[] = [
 		departmentSlug: 'gulf-coast-ems',
 		classification: 'EMS',
 		testProductSlug: 'medicteam',
-		salary: '$58,400 - $71,800',
 		location: 'Mobile, AL',
 		closingDate: '2026-09-30',
 		description:
-			'ALS paramedic position with $7,500 sign-on bonus. Nationally recognized cardiac and stroke care protocols.',
+			'ALS paramedic position. Nationally recognized cardiac and stroke care protocols.',
 		requirements: [
 			'State paramedic license',
 			'MedicTEAM score on file',
@@ -455,7 +436,6 @@ export const JOBS: JobPosting[] = [
 		departmentSlug: 'birmingham-metro-fire',
 		classification: 'FIREFIGHTER',
 		testProductSlug: 'fireteam',
-		salary: '$52,700 - $79,900',
 		location: 'Birmingham, AL',
 		closingDate: '2026-08-21',
 		description:
@@ -472,7 +452,6 @@ export const JOBS: JobPosting[] = [
 		departmentSlug: 'sound-transit-safety',
 		classification: 'TRANSIT',
 		testProductSlug: 'react',
-		salary: '$61,000 - $83,500',
 		location: 'Seattle, WA',
 		closingDate: '2026-08-10',
 		description:

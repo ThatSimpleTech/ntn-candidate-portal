@@ -63,11 +63,7 @@ export default async function JobPage({ params }: Props) {
 				addressCountry: 'US',
 			},
 		},
-		baseSalary: {
-			'@type': 'MonetaryAmount',
-			currency: 'USD',
-			value: { '@type': 'QuantitativeValue', value: job.salary, unitText: 'YEAR' },
-		},
+		baseSalary: undefined,
 		url: `${SITE.url}/jobs/${job.slug}`,
 	};
 
@@ -95,13 +91,14 @@ export default async function JobPage({ params }: Props) {
 						</p>
 						<div className="mono mt-8 flex flex-wrap gap-x-10 gap-y-3 text-sm">
 							<span>
-								<span className="text-brass">SALARY</span> {job.salary}
-							</span>
-							<span>
 								<span className="text-brass">CLOSES</span> {job.closingDate}
 							</span>
 							<span>
 								<span className="text-brass">EXAM</span> {test?.name} (${test?.priceUsd})
+							</span>
+							<span>
+								<span className="text-brass">SALARY</span> Set by the department — see
+								the official posting
 							</span>
 						</div>
 					</div>
