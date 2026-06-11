@@ -57,7 +57,6 @@ async function main() {
 			state: d.state,
 			classification: d.classification,
 			summary: d.summary,
-			salaryRange: d.salaryRange,
 		});
 		if (errors?.length) throw new Error(errors[0].message);
 		if (data) deptIds.set(d.slug, data.id);
@@ -73,7 +72,6 @@ async function main() {
 			departmentId,
 			classification: j.classification,
 			testProductSlug: j.testProductSlug,
-			salary: j.salary,
 			location: j.location,
 			closingDate: j.closingDate,
 			description: j.description,
