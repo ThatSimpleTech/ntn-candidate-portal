@@ -37,13 +37,13 @@ const VALUE_PROPS = [
 export default function DepartmentsPage() {
 	return (
 		<div>
-			<section className="hero-photo text-paper">
+			<section className="hero-photo hero-round -mt-19 text-paper">
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img src="/brand/landing-02.jpg" alt="" className="hero-img kenburns" />
 				<div>
-					<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+					<div className="mx-auto max-w-6xl px-4 pb-20 pt-40 sm:px-6">
 						<p className="eyebrow text-brass">For departments & agencies</p>
-						<h1 className="display mt-6 max-w-3xl text-5xl sm:text-7xl">
+						<h1 className="display mt-6 max-w-3xl text-[clamp(3rem,6vw,5.5rem)]">
 							Your next academy class is already testing
 						</h1>
 						<p className="mt-6 max-w-xl text-muted-ink">
@@ -52,7 +52,7 @@ export default function DepartmentsPage() {
 						</p>
 						<a
 							href="mailto:agencies@nationaltestingnetwork.com"
-							className="btn-gold eyebrow mt-10 px-7 py-4"
+							className="btn-gold btn-pill eyebrow mt-10 px-7 py-4"
 						>
 							Talk to the agency team →
 						</a>

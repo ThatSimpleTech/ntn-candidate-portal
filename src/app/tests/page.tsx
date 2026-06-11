@@ -45,11 +45,11 @@ export default function TestsPage() {
 									<span className="mono text-xs tracking-widest text-muted">
 										{t.code}
 									</span>
-									<span className="eyebrow bg-ink px-2 py-1 text-paper">
+									<span className="eyebrow rounded-full bg-ink px-3 py-1 text-paper">
 										{CLASSIFICATION_LABELS[t.classification]}
 									</span>
 									{t.virtual && (
-										<span className="eyebrow border border-brass px-2 py-1 text-brass">
+										<span className="eyebrow rounded-full border border-brass px-3 py-1 text-brass">
 											Virtual available
 										</span>
 									)}

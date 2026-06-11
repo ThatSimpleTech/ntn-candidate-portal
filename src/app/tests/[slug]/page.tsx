@@ -64,9 +64,9 @@ export default async function TestPage({ params }: Props) {
 				}}
 			/>
 
-			<header className="ink-tex border-b-2 border-brass/60 text-paper">
+			<header className="ink-tex -mt-19 rounded-b-[2rem] text-paper">
 				<div>
-					<div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+					<div className="mx-auto max-w-6xl px-4 pb-16 pt-36 sm:px-6">
 						<nav className="eyebrow text-muted-ink" aria-label="Breadcrumb">
 							<Link href="/tests" className="hover:text-brass">
 								Exams
@@ -150,7 +150,7 @@ export default async function TestPage({ params }: Props) {
 					</p>
 					<Link
 						href="/dashboard"
-						className="btn-gold eyebrow mt-6 inline-block px-8 py-4"
+						className="btn-gold btn-pill eyebrow mt-6 inline-block px-8 py-4"
 					>
 						Schedule the {test.name} →
 					</Link>

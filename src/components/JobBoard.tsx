@@ -50,16 +50,16 @@ export function JobBoard({ jobs, departments }: Props) {
 						placeholder="Search title, department, or city..."
 						value={query}
 						onChange={(e) => setQuery(e.target.value)}
-						className="mono w-full border border-line bg-paper px-4 py-3 text-sm outline-none transition-colors focus:border-signal"
+						className="mono w-full rounded-full border border-line bg-paper px-5 py-3 text-sm outline-none transition-colors focus:border-signal"
 					/>
 				</label>
 				<div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by track">
 					<button
 						type="button"
 						onClick={() => setTrack('ALL')}
-						className={`eyebrow px-3 py-2 transition-all ${
+						className={`eyebrow rounded-full px-4 py-2 transition-all ${
 							track === 'ALL'
-								? 'bg-ink text-paper shadow-[inset_0_-2px_0_0_var(--brass)]'
+								? 'bg-ink text-paper shadow-[inset_0_0_0_1px_var(--brass)]'
 								: 'border border-line hover:border-brass hover:text-signal'
 						}`}
 					>
@@ -70,9 +70,9 @@ export function JobBoard({ jobs, departments }: Props) {
 							key={c}
 							type="button"
 							onClick={() => setTrack(c)}
-							className={`eyebrow px-3 py-2 transition-all ${
+							className={`eyebrow rounded-full px-4 py-2 transition-all ${
 								track === c
-									? 'bg-ink text-paper shadow-[inset_0_-2px_0_0_var(--brass)]'
+									? 'bg-ink text-paper shadow-[inset_0_0_0_1px_var(--brass)]'
 									: 'border border-line hover:border-brass hover:text-signal'
 							}`}
 						>
@@ -97,7 +97,7 @@ export function JobBoard({ jobs, departments }: Props) {
 							>
 								<div>
 									<div className="flex flex-wrap items-center gap-3">
-										<span className="eyebrow bg-ink px-2 py-1 text-paper">
+										<span className="eyebrow rounded-full bg-ink px-3 py-1 text-paper">
 											{CLASSIFICATION_LABELS[job.classification]}
 										</span>
 										<span className="mono text-xs text-muted">
