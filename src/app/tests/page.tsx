@@ -30,40 +30,41 @@ export default function TestsPage() {
 					tricks — a fair preview of the work, scored against national benchmarks.
 				</p>
 
-				<div className="mt-12 space-y-4">
+				<div className="mt-12 border-t border-line">
 					{TESTS.map((t, i) => (
 						<Link
 							key={t.slug}
 							href={`/tests/${t.slug}`}
-							className="card-lift grid gap-6 border border-line bg-paper p-6 sm:grid-cols-[80px_1fr_auto] sm:items-center"
+							className="ink-sweep group -mx-4 grid grid-cols-[1fr_auto] items-center gap-x-6 gap-y-1 border-b border-line px-4 py-7 sm:grid-cols-[6.5rem_1fr_auto] sm:py-8"
 						>
-							<span className="display gold-emboss hidden text-6xl sm:block">
+							<span className="display num-ghost hidden text-7xl leading-none sm:block">
 								{String(i + 1).padStart(2, '0')}
 							</span>
-							<div>
-								<div className="flex flex-wrap items-center gap-3">
-									<span className="mono text-xs tracking-widest text-muted">
+							<span className="min-w-0">
+								<span className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+									<span className="display text-3xl transition-colors duration-500 group-hover:text-paper sm:text-4xl">
+										{t.name}
+									</span>
+									<span className="mono text-xs tracking-widest text-muted transition-colors duration-500 group-hover:text-brass">
 										{t.code}
 									</span>
-									<span className="eyebrow rounded-full bg-ink px-3 py-1 text-paper">
+									<span className="eyebrow text-signal transition-colors duration-500 group-hover:text-brass">
 										{CLASSIFICATION_LABELS[t.classification]}
+										{t.virtual ? ' · virtual available' : ''}
 									</span>
-									{t.virtual && (
-										<span className="eyebrow rounded-full border border-brass px-3 py-1 text-brass">
-											Virtual available
-										</span>
-									)}
-								</div>
-								<h2 className="display mt-3 text-4xl">{t.name}</h2>
-								<p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+								</span>
+								<span className="mt-1.5 block max-w-2xl text-sm leading-relaxed text-muted transition-colors duration-500 group-hover:text-paper/70">
 									{t.summary}
-								</p>
-							</div>
-							<div className="text-left sm:text-right">
-								<p className="mono text-2xl">${t.priceUsd}</p>
-								<p className="mono mt-1 text-xs text-muted">{t.durationMinutes} min</p>
-								<p className="eyebrow mt-3 text-signal">Details →</p>
-							</div>
+								</span>
+							</span>
+							<span className="text-right">
+								<span className="mono block text-2xl transition-colors duration-500 group-hover:text-brass">
+									${t.priceUsd}
+								</span>
+								<span className="mono mt-0.5 block text-xs text-muted transition-colors duration-500 group-hover:text-paper/60">
+									{t.durationMinutes} min
+								</span>
+							</span>
 						</Link>
 					))}
 				</div>

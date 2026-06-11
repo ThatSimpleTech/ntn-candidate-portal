@@ -165,25 +165,33 @@ export default function HomePage() {
 							</Link>
 						</div>
 					</Reveal>
-					<div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+					{/* Duty roster: a typographic index, not a card grid */}
+					<div className="mt-12 border-t border-line">
 						{TRACKS.map((t, i) => (
-							<Reveal key={t.classification} delay={i * 70}>
+							<Reveal key={t.classification} delay={i * 50}>
 								<Link
 									href={`/jobs?track=${t.classification}`}
-									className="card-lift group block h-full border border-line p-5"
+									className="ink-sweep group -mx-4 flex items-center gap-4 border-b border-line px-4 py-5 sm:gap-8 sm:py-6"
 								>
+									<span className="mono w-8 text-xs text-muted transition-colors duration-500 group-hover:text-brass">
+										{String(i + 1).padStart(2, '0')}
+									</span>
+									<span className="display flex-1 text-[clamp(1.75rem,4.5vw,3.5rem)] transition-colors duration-500 group-hover:text-paper">
+										{t.label}
+										<sup className="mono ml-2 align-super text-xs font-normal tracking-normal text-signal transition-colors duration-500 group-hover:text-brass sm:ml-3 sm:text-sm">
+											{t.count}
+										</sup>
+									</span>
 									<TrackIcon
 										classification={t.classification}
-										className="h-9 w-9 text-signal transition-transform duration-300 group-hover:scale-110"
+										className="h-8 w-8 text-signal opacity-70 transition-all duration-500 group-hover:translate-x-0 group-hover:text-brass group-hover:opacity-100 sm:h-10 sm:w-10 sm:translate-x-2"
 									/>
-									<p className="display mt-5 text-xl leading-tight">{t.label}</p>
-									<p className="mono mt-2 text-xs text-muted">
-										{t.count} open posting{t.count === 1 ? '' : 's'}
-									</p>
 									<span
-										className="gold-rule mt-4 block h-0.5 w-8 transition-all duration-300 group-hover:w-14"
+										className="hidden text-xl text-muted transition-all duration-500 group-hover:translate-x-1 group-hover:text-brass sm:block"
 										aria-hidden
-									/>
+									>
+										→
+									</span>
 								</Link>
 							</Reveal>
 						))}
@@ -202,24 +210,21 @@ export default function HomePage() {
 							</h2>
 							<span className="heading-rule mt-4" aria-hidden />
 						</Reveal>
-						<div className="relative mt-14">
-							<div
-								className="absolute left-0 right-0 top-14 hidden h-px bg-gradient-to-r from-transparent via-brass/50 to-transparent md:block"
-								aria-hidden
-							/>
-							<div className="relative grid gap-5 md:grid-cols-3">
-								{STEPS.map((step, i) => (
-									<Reveal key={step.title} delay={i * 120}>
-										<div className="card-glass-dark h-full p-8">
-											<p className="display gold-text text-6xl">
-												{String(i + 1).padStart(2, '0')}
-											</p>
-											<h3 className="display mt-5 text-2xl">{step.title}</h3>
-											<p className="mt-3 text-sm leading-relaxed text-paper/70">{step.body}</p>
-										</div>
-									</Reveal>
-								))}
-							</div>
+						{/* Three stations divided by hairlines — typography carries it, no boxes */}
+						<div className="mt-12 grid divide-y divide-white/10 md:grid-cols-3 md:divide-x md:divide-y-0">
+							{STEPS.map((step, i) => (
+								<Reveal key={step.title} delay={i * 130}>
+									<div className={`h-full py-8 md:py-2 ${i > 0 ? 'md:pl-10' : ''} ${i < 2 ? 'md:pr-10' : ''}`}>
+										<p className="display num-ghost-dark text-[clamp(5rem,9vw,8rem)] leading-none">
+											{String(i + 1).padStart(2, '0')}
+										</p>
+										<h3 className="display -mt-4 text-3xl">{step.title}</h3>
+										<p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/65">
+											{step.body}
+										</p>
+									</div>
+								</Reveal>
+							))}
 						</div>
 					</div>
 				</div>
@@ -235,34 +240,38 @@ export default function HomePage() {
 						</h2>
 						<span className="heading-rule mt-4" aria-hidden />
 					</Reveal>
-					<div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+					{/* The commission's exam ledger: registry rows, hairline rules */}
+					<div className="mt-12 border-t border-line">
 						{TESTS.map((t, i) => (
-							<Reveal key={t.slug} delay={(i % 3) * 100}>
+							<Reveal key={t.slug} delay={i * 50}>
 								<Link
 									href={`/tests/${t.slug}`}
-									className="card-lift group flex h-full flex-col border border-line"
+									className="ink-sweep group -mx-4 grid grid-cols-[1fr_auto] items-center gap-x-6 gap-y-1 border-b border-line px-4 py-6 sm:grid-cols-[6rem_1fr_auto] sm:py-7"
 								>
-									<div className="ink-tex flex items-center justify-between px-5 py-3 text-paper">
-										<span className="eyebrow text-paper/60">{t.code}</span>
-										<span className="eyebrow text-brass">
-											{CLASSIFICATION_LABELS[t.classification]}
+									<span className="mono hidden text-xs tracking-widest text-muted transition-colors duration-500 group-hover:text-brass sm:block">
+										{t.code}
+									</span>
+									<span className="min-w-0">
+										<span className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+											<span className="display text-3xl transition-colors duration-500 group-hover:text-paper sm:text-4xl">
+												{t.name}
+											</span>
+											<span className="eyebrow text-signal transition-colors duration-500 group-hover:text-brass">
+												{CLASSIFICATION_LABELS[t.classification]}
+											</span>
 										</span>
-									</div>
-									<div className="flex flex-1 flex-col p-5">
-										<h3 className="display text-3xl">{t.name}</h3>
-										<p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
+										<span className="mt-1.5 block max-w-xl text-sm leading-relaxed text-muted transition-colors duration-500 group-hover:text-paper/70">
 											{t.summary}
-										</p>
-										<div className="mono mt-5 flex items-center justify-between border-t border-line pt-4 text-sm">
-											<span>
-												${t.priceUsd}{' '}
-												<span className="text-xs text-muted">incl. one department</span>
-											</span>
-											<span className="eyebrow text-signal transition-colors group-hover:text-signal-deep">
-												Details →
-											</span>
-										</div>
-									</div>
+										</span>
+									</span>
+									<span className="text-right">
+										<span className="mono block text-2xl transition-colors duration-500 group-hover:text-brass">
+											${t.priceUsd}
+										</span>
+										<span className="mono mt-0.5 block text-[0.65rem] text-muted transition-colors duration-500 group-hover:text-paper/60">
+											{t.durationMinutes} min · incl. 1 dept
+										</span>
+									</span>
 								</Link>
 							</Reveal>
 						))}

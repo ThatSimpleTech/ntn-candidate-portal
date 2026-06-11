@@ -101,14 +101,14 @@ export default async function TestPage({ params }: Props) {
 				</div>
 
 				<h2 className="display mt-14 text-4xl">What the exam covers</h2>
-				<div className="mt-8 grid gap-4 md:grid-cols-2">
+				<div className="mt-6 grid border-t border-line md:grid-cols-2 md:gap-x-16">
 					{test.sections.map((s, i) => (
-						<div key={s.name} className="card-static border border-line p-6">
-							<p className="mono text-xs text-signal">
-								SECTION {String(i + 1).padStart(2, '0')}
+						<div key={s.name} className="border-b border-line py-8">
+							<p className="display num-ghost text-6xl leading-none">
+								{String(i + 1).padStart(2, '0')}
 							</p>
-							<h3 className="display mt-2 text-2xl">{s.name}</h3>
-							<p className="mt-2 text-sm leading-relaxed text-muted">{s.description}</p>
+							<h3 className="display -mt-2 text-2xl">{s.name}</h3>
+							<p className="mt-3 max-w-md text-sm leading-relaxed text-muted">{s.description}</p>
 						</div>
 					))}
 				</div>
@@ -118,22 +118,26 @@ export default async function TestPage({ params }: Props) {
 						<h2 className="display mt-14 text-4xl">
 							Departments accepting {test.name} scores
 						</h2>
-						<ul className="mt-8 space-y-3">
+						<ul className="mt-6 border-t border-line">
 							{relatedJobs.map((job) => {
 								const dept = departmentBySlug(job.departmentSlug);
 								return (
 									<li key={job.slug}>
 										<Link
 											href={`/jobs/${job.slug}`}
-											className="card-lift flex flex-wrap items-center justify-between gap-4 border border-line bg-paper px-5 py-4"
+											className="ink-sweep group -mx-4 flex flex-wrap items-center justify-between gap-4 border-b border-line px-4 py-5"
 										>
 											<span>
-												<span className="display text-2xl">{job.title}</span>
-												<span className="ml-3 text-sm text-muted">
+												<span className="display text-2xl transition-colors duration-500 group-hover:text-paper">
+													{job.title}
+												</span>
+												<span className="ml-3 text-sm text-muted transition-colors duration-500 group-hover:text-paper/70">
 													{dept?.name} — {job.location}
 												</span>
 											</span>
-											<span className="eyebrow text-signal">View →</span>
+											<span className="eyebrow text-signal transition-colors duration-500 group-hover:text-brass">
+												View →
+											</span>
 										</Link>
 									</li>
 								);

@@ -60,16 +60,19 @@ export default function DepartmentsPage() {
 				</div>
 			</section>
 
-			<section className="border-b border-line bg-paper">
-				<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-					<div className="grid gap-4 md:grid-cols-2">
+			<section className="bg-paper">
+				<div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+					<div className="grid divide-y divide-line md:grid-cols-2 md:gap-x-16 md:divide-y-0">
 						{VALUE_PROPS.map((v, i) => (
-							<div key={v.title} className="card-static border border-line p-8">
-								<p className="display gold-emboss text-6xl">
+							<div
+								key={v.title}
+								className={`py-10 ${i < 2 ? 'md:border-b md:border-line' : ''}`}
+							>
+								<p className="display num-ghost text-[clamp(4.5rem,8vw,7rem)] leading-none">
 									{String(i + 1).padStart(2, '0')}
 								</p>
-								<h2 className="display mt-5 text-2xl">{v.title}</h2>
-								<p className="mt-3 text-sm leading-relaxed text-muted">{v.body}</p>
+								<h2 className="display -mt-3 text-3xl">{v.title}</h2>
+								<p className="mt-4 max-w-md text-sm leading-relaxed text-muted">{v.body}</p>
 							</div>
 						))}
 					</div>
@@ -81,11 +84,14 @@ export default function DepartmentsPage() {
 					<p className="eyebrow text-signal">Currently recruiting through NTN</p>
 					<h2 className="display mt-4 text-4xl">Departments on the network</h2>
 					<span className="heading-rule in mt-4" aria-hidden />
-					<div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+					<div className="mt-10 grid border-t border-line sm:grid-cols-2">
 						{DEPARTMENTS.map((d) => (
-							<div key={d.slug} className="card-static border border-line p-5">
+							<div
+								key={d.slug}
+								className="flex items-baseline justify-between gap-4 border-b border-line py-4 sm:odd:pr-10 sm:even:pl-10"
+							>
 								<p className="display text-xl leading-tight">{d.name}</p>
-								<p className="mono mt-2 text-xs text-muted">
+								<p className="mono whitespace-nowrap text-xs text-muted">
 									{d.city}, {d.state}
 								</p>
 							</div>
