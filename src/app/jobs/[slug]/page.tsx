@@ -80,9 +80,9 @@ export default async function JobPage({ params }: Props) {
 				}}
 			/>
 
-			<header className="ink-tex border-b-2 border-brass/60 text-paper">
+			<header className="ink-tex -mt-19 rounded-b-[2rem] text-paper">
 				<div>
-					<div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+					<div className="mx-auto max-w-6xl px-4 pb-16 pt-36 sm:px-6">
 						<nav className="eyebrow text-muted-ink" aria-label="Breadcrumb">
 							<Link href="/jobs" className="hover:text-brass">
 								Find Jobs
@@ -134,7 +134,7 @@ export default async function JobPage({ params }: Props) {
 				</div>
 
 				<aside>
-					<div className="card-static sticky top-24 border border-line">
+					<div className="card-static sticky top-24 overflow-hidden border border-line">
 						<div className="gold-rule h-1 w-full" aria-hidden />
 						<div className="p-6">
 							<p className="eyebrow text-signal">How to apply</p>
@@ -154,14 +154,14 @@ export default async function JobPage({ params }: Props) {
 							</ol>
 							<Link
 								href="/dashboard"
-								className="btn-gold eyebrow mt-6 block px-5 py-3 text-center"
+								className="btn-gold btn-pill eyebrow mt-6 block px-5 py-3 text-center"
 							>
 								Start application →
 							</Link>
 							{test && (
 								<Link
 									href={`/tests/${test.slug}`}
-									className="eyebrow mt-3 block border border-ink px-5 py-3 text-center transition-colors hover:bg-paper-2"
+									className="eyebrow mt-3 block rounded-full border border-ink px-5 py-3 text-center transition-colors hover:bg-paper-2"
 								>
 									About the {test.name}
 								</Link>

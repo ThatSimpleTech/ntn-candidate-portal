@@ -18,8 +18,8 @@ export function Header() {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<header className="header-glass sticky top-0 z-50 text-paper">
-			<div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
+		<header className="sticky top-3 z-50 px-3 pt-3 text-paper sm:px-6">
+			<div className="header-glass mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 rounded-full border border-white/10 px-5 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)] sm:px-7">
 				<Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
 					<Image
 						src="/brand/logo_white_letters.png"
@@ -27,7 +27,7 @@ export function Header() {
 						width={150}
 						height={56}
 						preload
-						className="h-11 w-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]"
+						className="h-10 w-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]"
 					/>
 				</Link>
 
@@ -49,7 +49,7 @@ export function Header() {
 					})}
 					<Link
 						href="/dashboard"
-						className="btn-gold eyebrow ml-3 px-4 py-2.5"
+						className="btn-gold btn-pill eyebrow ml-3 px-5 py-2.5"
 					>
 						Candidate Login
 					</Link>
@@ -57,7 +57,7 @@ export function Header() {
 
 				<button
 					type="button"
-					className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border border-line-ink lg:hidden"
+					className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-white/15 lg:hidden"
 					aria-expanded={open}
 					aria-label="Toggle navigation"
 					onClick={() => setOpen((v) => !v)}
@@ -71,18 +71,17 @@ export function Header() {
 					/>
 				</button>
 			</div>
-			<div className="gold-rule h-0.5 w-full" aria-hidden />
 
 			{open && (
 				<nav
-					className="header-glass border-t border-line-ink px-4 pb-4 lg:hidden"
+					className="header-glass mx-auto mt-2 max-w-6xl rounded-3xl border border-white/10 px-5 pb-5 pt-2 shadow-[0_24px_48px_-20px_rgba(0,0,0,0.65)] lg:hidden"
 					aria-label="Mobile"
 				>
 					{NAV.map((item) => (
 						<Link
 							key={item.href}
 							href={item.href}
-							className="eyebrow block border-b border-line-ink py-3 text-paper"
+							className="eyebrow block border-b border-white/10 py-3.5 text-paper"
 							onClick={() => setOpen(false)}
 						>
 							{item.label}
@@ -90,7 +89,7 @@ export function Header() {
 					))}
 					<Link
 						href="/dashboard"
-						className="btn-gold eyebrow mt-3 block px-4 py-3 text-center"
+						className="btn-gold btn-pill eyebrow mt-4 block px-4 py-3 text-center"
 						onClick={() => setOpen(false)}
 					>
 						Candidate Login

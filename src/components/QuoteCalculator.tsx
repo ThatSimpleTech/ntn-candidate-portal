@@ -65,7 +65,7 @@ export function QuoteCalculator() {
 	}, [testSlug, departments, inputKey]);
 
 	return (
-		<div className="card-static border border-line">
+		<div className="card-static overflow-hidden border border-line">
 			<div className="ink-tex flex items-center justify-between border-b-2 border-ink px-5 py-3 text-paper">
 				<span className="eyebrow">Cost estimator</span>
 				<span
@@ -88,7 +88,7 @@ export function QuoteCalculator() {
 						id="quote-test"
 						value={testSlug}
 						onChange={(e) => setTestSlug(e.target.value)}
-						className="mono mt-2 w-full border border-line bg-paper px-3 py-3 text-sm outline-none focus:border-signal"
+						className="mono mt-2 w-full rounded-lg border border-line bg-paper px-3 py-3 text-sm outline-none focus:border-signal"
 					>
 						{TESTS.map((t) => (
 							<option key={t.slug} value={t.slug}>

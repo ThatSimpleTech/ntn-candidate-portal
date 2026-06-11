@@ -79,16 +79,20 @@ export default function HomePage() {
 				}}
 			/>
 
+			{/* Warm paper canvas: the hero and every panel float on it */}
+			<div className="paper-tex -mt-19 pb-24">
+
 			{/* Hero — NTN photography, cinematic grade, slow ceremonial push-in */}
-			<section className="hero-photo text-paper">
+			<section className="hero-photo hero-round text-paper">
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img src="/brand/landing-01.jpg" alt="" className="hero-img kenburns" />
-				<div className="mx-auto flex min-h-[78vh] max-w-6xl flex-col justify-center px-4 pb-40 pt-24 sm:px-6 lg:pt-28">
+				<div className="mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-center px-4 pb-44 pt-40 sm:px-6">
 					<p className="eyebrow rise rise-1 flex items-center gap-3 text-brass">
 						<span className="gold-rule h-px w-10" aria-hidden />
 						Public safety testing &middot; Est. 2006
 					</p>
-					<h1 className="display rise rise-2 mt-6 max-w-4xl text-6xl sm:text-7xl lg:text-8xl">
+					<h1 className="display rise rise-2 relative mt-6 max-w-4xl text-[clamp(3.5rem,8vw,7.75rem)]">
+						<span className="glow-gold -inset-x-16 -inset-y-8" aria-hidden />
 						Building stronger
 						<br />
 						<span className="gold-text">public safety</span> teams.
@@ -99,12 +103,12 @@ export default function HomePage() {
 						EMS departments hiring across the country.
 					</p>
 					<div className="rise rise-4 mt-10 flex flex-wrap gap-4">
-						<Link href="/jobs" className="btn-gold eyebrow px-7 py-4">
+						<Link href="/jobs" className="btn-gold btn-pill eyebrow px-8 py-4">
 							Browse open jobs →
 						</Link>
 						<Link
 							href="/tests"
-							className="eyebrow border border-paper/60 px-7 py-4 text-paper backdrop-blur-sm transition-colors hover:border-brass hover:text-brass"
+							className="eyebrow rounded-full border border-paper/50 px-8 py-4 text-paper backdrop-blur-sm transition-all hover:border-brass hover:text-brass"
 						>
 							Explore the exams
 						</Link>
@@ -142,13 +146,15 @@ export default function HomePage() {
 			</div>
 
 			{/* Career tracks */}
-			<section className="border-b border-line bg-paper">
-				<div className="mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6">
+			<section>
+				<div className="mx-auto max-w-6xl px-4 pb-10 pt-16 sm:px-6">
 					<Reveal>
 						<div className="flex items-end justify-between gap-6">
 							<div>
 								<p className="eyebrow text-signal">Where do you serve?</p>
-								<h2 className="display mt-3 text-4xl sm:text-5xl">Choose your track</h2>
+								<h2 className="display mt-3 text-[clamp(2.25rem,4.5vw,3.75rem)]">
+									Choose your track
+								</h2>
 								<span className="heading-rule mt-4" aria-hidden />
 							</div>
 							<Link
@@ -185,44 +191,46 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			{/* How it works — three stations on one gold thread */}
-			<section className="paper-tex border-b border-line">
-				<div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-					<Reveal>
-						<p className="eyebrow text-signal">How it works</p>
-						<h2 className="display mt-3 text-4xl sm:text-5xl">
-							Built for the way hiring actually moves
-						</h2>
-						<span className="heading-rule mt-4" aria-hidden />
-					</Reveal>
-					<div className="relative mt-14">
-						<div
-							className="absolute left-0 right-0 top-14 hidden h-px bg-gradient-to-r from-transparent via-brass/70 to-transparent md:block"
-							aria-hidden
-						/>
-						<div className="relative grid gap-4 md:grid-cols-3">
-							{STEPS.map((step, i) => (
-								<Reveal key={step.title} delay={i * 120}>
-									<div className="card-static h-full border border-line p-8">
-										<p className="display gold-emboss text-6xl">
-											{String(i + 1).padStart(2, '0')}
-										</p>
-										<h3 className="display mt-5 text-2xl">{step.title}</h3>
-										<p className="mt-3 text-sm leading-relaxed text-muted">{step.body}</p>
-									</div>
-								</Reveal>
-							))}
+			{/* How it works — a dark mounted panel, three stations on one gold thread */}
+			<section className="mx-3 mt-8 sm:mx-6 lg:mx-10">
+				<div className="panel-ink ink-tex text-paper">
+					<div className="mx-auto max-w-6xl px-5 py-20 sm:px-10 lg:py-24">
+						<Reveal>
+							<p className="eyebrow text-brass">How it works</p>
+							<h2 className="display mt-3 text-[clamp(2.25rem,4.5vw,3.75rem)]">
+								Built for the way hiring actually moves
+							</h2>
+							<span className="heading-rule mt-4" aria-hidden />
+						</Reveal>
+						<div className="relative mt-14">
+							<div
+								className="absolute left-0 right-0 top-14 hidden h-px bg-gradient-to-r from-transparent via-brass/50 to-transparent md:block"
+								aria-hidden
+							/>
+							<div className="relative grid gap-5 md:grid-cols-3">
+								{STEPS.map((step, i) => (
+									<Reveal key={step.title} delay={i * 120}>
+										<div className="card-glass-dark h-full p-8">
+											<p className="display gold-text text-6xl">
+												{String(i + 1).padStart(2, '0')}
+											</p>
+											<h3 className="display mt-5 text-2xl">{step.title}</h3>
+											<p className="mt-3 text-sm leading-relaxed text-paper/70">{step.body}</p>
+										</div>
+									</Reveal>
+								))}
+							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* Exam catalog */}
-			<section className="border-b border-line bg-paper">
+			<section>
 				<div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
 					<Reveal>
 						<p className="eyebrow text-signal">The exams</p>
-						<h2 className="display mt-3 text-4xl sm:text-5xl">
+						<h2 className="display mt-3 text-[clamp(2.25rem,4.5vw,3.75rem)]">
 							Job-built, video-based, nationally validated
 						</h2>
 						<span className="heading-rule mt-4" aria-hidden />
@@ -263,13 +271,14 @@ export default function HomePage() {
 			</section>
 
 			{/* Agency honor ring — NTN's real agency seals as mounted medallions */}
-			<section className="ink-tex text-paper" aria-label="Participating agencies">
-				<div className="mx-auto max-w-6xl overflow-hidden px-4 py-20 sm:px-6">
+			<section className="mx-3 sm:mx-6 lg:mx-10" aria-label="Participating agencies">
+				<div className="panel-ink ink-tex text-paper">
+				<div className="mx-auto max-w-6xl overflow-hidden px-4 py-20 sm:px-6 lg:py-24">
 					<Reveal>
 						<p className="eyebrow text-center text-brass">
 							Trusted by departments nationwide
 						</p>
-						<h2 className="display mt-3 text-center text-4xl sm:text-5xl">
+						<h2 className="display mt-3 text-center text-[clamp(2.25rem,4.5vw,3.75rem)]">
 							In service of cities like yours
 						</h2>
 					</Reveal>
@@ -302,11 +311,12 @@ export default function HomePage() {
 						{SEALS.map((s) => s.name).join('  ·  ')}
 					</p>
 				</div>
+				</div>
 			</section>
 
 			{/* Split CTA */}
-			<section className="grid md:grid-cols-2">
-				<div className="paper-tex border-b border-line p-10 md:border-b-0 md:border-r lg:p-16">
+			<section className="mx-3 mt-16 grid gap-5 sm:mx-6 md:grid-cols-2 lg:mx-10">
+				<div className="card-static rounded-[2rem] border border-line p-10 lg:p-16">
 					<Reveal>
 						<p className="eyebrow text-signal">Candidates</p>
 						<h2 className="display mt-4 text-4xl">Your career starts with one exam</h2>
@@ -316,13 +326,13 @@ export default function HomePage() {
 						</p>
 						<Link
 							href="/dashboard"
-							className="eyebrow mt-8 inline-block bg-ink px-6 py-3.5 text-paper shadow-[0_8px_20px_-8px_rgba(24,24,24,0.5)] transition-all hover:-translate-y-0.5 hover:bg-ink-2 hover:shadow-[0_14px_28px_-10px_rgba(24,24,24,0.55)]"
+							className="eyebrow mt-8 inline-block rounded-full bg-ink px-7 py-3.5 text-paper shadow-[0_8px_20px_-8px_rgba(24,24,24,0.5)] transition-all hover:-translate-y-0.5 hover:bg-ink-2 hover:shadow-[0_14px_28px_-10px_rgba(24,24,24,0.55)]"
 						>
 							Create your account →
 						</Link>
 					</Reveal>
 				</div>
-				<div className="hero-photo p-10 text-paper lg:p-16">
+				<div className="hero-photo rounded-[2rem] p-10 text-paper shadow-[0_40px_80px_-40px_rgba(24,24,24,0.55)] lg:p-16">
 					{/* eslint-disable-next-line @next/next/no-img-element */}
 					<img src="/brand/landing-04.jpg" alt="" className="hero-img" />
 					<Reveal>
@@ -332,12 +342,14 @@ export default function HomePage() {
 							Continuous testing delivers ranked, pre-screened candidate lists year-round —
 							no exam logistics, no proctoring overhead, no waiting for the next cycle.
 						</p>
-						<Link href="/departments" className="btn-gold eyebrow mt-8 px-6 py-3.5">
+						<Link href="/departments" className="btn-gold btn-pill eyebrow mt-8 px-7 py-3.5">
 							Partner with NTN →
 						</Link>
 					</Reveal>
 				</div>
 			</section>
+
+			</div>
 		</>
 	);
 }

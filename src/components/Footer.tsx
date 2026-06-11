@@ -4,7 +4,7 @@ import { CLASSIFICATION_LABELS, TESTS } from '@/lib/content';
 
 export function Footer() {
 	return (
-		<footer className="ink-tex text-paper">
+		<footer className="ink-tex overflow-hidden rounded-t-[2rem] text-paper">
 			<div className="gold-rule h-0.5 w-full" aria-hidden />
 			<div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
 				<div className="md:col-span-2">

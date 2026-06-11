@@ -24,8 +24,11 @@
   --brass: #d8bd22;           /* bright NTN gold — accents on dark */
   --muted: #585858;
   --muted-on-ink: #bdbdbd;
-  --line: #e4e3df;
+  --line: #eae9e3;
   --line-on-ink: #3a3a3a;
+  --r-card: 1rem;
+  --r-panel: 2rem;
+  --r-btn: 0.65rem;
   interpolate-size: allow-keywords;
 }
 
@@ -65,8 +68,8 @@ body {
   font-family: var(--font-barlow), sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.005em;
-  line-height: 0.95;
+  letter-spacing: 0.008em;
+  line-height: 0.92;
 }
 
 /* Engraved small-caps label — replaces mono eyebrows */
@@ -114,6 +117,7 @@ body {
   position: relative;
   overflow: hidden;
   display: inline-block;
+  border-radius: var(--r-btn);
   color: var(--ink);
   background: linear-gradient(180deg, #e9d041 0%, #d3ba1d 55%, #c4ac15 100%);
   box-shadow:
@@ -156,6 +160,11 @@ body {
   filter: brightness(0.98);
 }
 
+/* Fully-rounded variant for buttons mounted in pill chrome */
+.btn-pill {
+  border-radius: 9999px;
+}
+
 /* ---- Atmospheric grounds ---- */
 
 /* Engraved charcoal: concentric guilloché arcs + warm gold atmosphere so
@@ -185,6 +194,7 @@ body {
   background: rgba(18, 18, 18, 0.88);
   -webkit-backdrop-filter: blur(16px) saturate(1.3);
   backdrop-filter: blur(16px) saturate(1.3);
+  border-radius: calc(var(--r-card) + 0.25rem);
   border: 1px solid rgba(216, 189, 34, 0.30);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
@@ -208,6 +218,14 @@ body {
   .header-glass {
     background: rgba(18, 18, 18, 0.97);
   }
+}
+
+/* Warm gold aura mounted behind hero headlines */
+.glow-gold {
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(216, 189, 34, 0.20), transparent 70%);
+  filter: blur(24px);
 }
 
 /* Primary nav: gold rule draws under the hovered/active item */
@@ -328,24 +346,29 @@ body {
 .rise-4 { animation-delay: 0.55s; }
 .rise-5 { animation-delay: 0.7s; }
 
-/* Scroll-triggered reveal (Reveal component adds .in via IntersectionObserver) */
+/* Scroll-triggered reveal (Reveal component adds .in via IntersectionObserver):
+   soft rise with a focus pull so entrances feel fluid, not mechanical */
 .reveal {
   opacity: 0;
-  transform: translateY(26px);
+  transform: translateY(32px) scale(0.985);
+  filter: blur(7px);
   transition:
-    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.05s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.9s ease;
 }
 
 .reveal.in {
   opacity: 1;
   transform: none;
+  filter: none;
 }
 
 /* Gold bar that draws itself when its .reveal parent enters */
 .heading-rule {
   display: block;
   height: 3px;
+  border-radius: 9999px;
   width: 0;
   background: linear-gradient(90deg, #e6cc3b, #b69d14);
   transition: width 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
@@ -489,15 +512,16 @@ body {
 .card-lift {
   position: relative;
   overflow: hidden;
+  border-radius: var(--r-card);
   background-image: linear-gradient(180deg, #ffffff 0%, #fbfaf6 100%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.85),
-    0 1px 2px rgba(24, 24, 24, 0.05),
-    0 8px 20px -10px rgba(24, 24, 24, 0.12);
+    0 1px 2px rgba(24, 24, 24, 0.04),
+    0 12px 32px -14px rgba(24, 24, 24, 0.14);
   transition:
-    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
 }
 
 .card-lift::after {
@@ -532,11 +556,45 @@ body {
 
 /* Letterpress card, static: same material without the interaction cues */
 .card-static {
+  border-radius: var(--r-card);
   background-image: linear-gradient(180deg, #ffffff 0%, #fbfaf6 100%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.85),
-    0 1px 2px rgba(24, 24, 24, 0.05),
-    0 8px 20px -10px rgba(24, 24, 24, 0.12);
+    0 1px 2px rgba(24, 24, 24, 0.04),
+    0 12px 32px -14px rgba(24, 24, 24, 0.14);
+}
+
+/* Frosted slab for cards mounted inside dark panels */
+.card-glass-dark {
+  border-radius: var(--r-card);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 20px 40px -24px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.45s ease, background 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-glass-dark:hover {
+  border-color: rgba(216, 189, 34, 0.45);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-4px);
+}
+
+/* Section as a mounted panel: rounded slab floating on the paper canvas */
+.panel-ink {
+  border-radius: var(--r-panel);
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 40px 80px -40px rgba(24, 24, 24, 0.55);
+}
+
+/* Hero finishes in a soft curve instead of a hard horizon */
+.hero-round {
+  border-radius: 0 0 var(--r-panel) var(--r-panel);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -550,6 +608,7 @@ body {
 /* ---- FAQ accordion: engraved file drawer ---- */
 
 .faq-card {
+  border-radius: var(--r-card);
   border-left: 3px solid transparent;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -599,14 +658,16 @@ body {
 /* ---- Amplify Authenticator: dressed in the brand ---- */
 
 [data-amplify-authenticator] {
-  --amplify-components-fieldcontrol-border-radius: 0;
-  --amplify-components-button-border-radius: 0;
+  --amplify-components-fieldcontrol-border-radius: 0.5rem;
+  --amplify-components-button-border-radius: var(--r-btn);
   --amplify-components-authenticator-router-box-shadow: none;
   --amplify-fonts-default-variable: var(--font-public-sans), system-ui, sans-serif;
   --amplify-fonts-default-static: var(--font-public-sans), system-ui, sans-serif;
 }
 
 [data-amplify-authenticator] [data-amplify-router] {
+  border-radius: calc(var(--r-card) + 0.25rem);
+  overflow: hidden;
   border: 1px solid rgba(216, 189, 34, 0.35);
   border-top: 3px solid var(--brass);
   background:
@@ -703,6 +764,8 @@ body {
 /* Pre-auth only (the Authenticator UI is unmounted once signed in):
    mount the sign-in card on an engraved charcoal stage */
 .auth-shell:has([data-amplify-authenticator]) {
+  margin-top: -4.75rem;
+  padding-top: 9.5rem;
   background-color: var(--ink);
   background-image:
     radial-gradient(ellipse 90% 70% at 85% -15%, rgba(216, 189, 34, 0.10), transparent 60%),
@@ -712,7 +775,9 @@ body {
       transparent 0 139px,
       rgba(216, 189, 34, 0.045) 139px 140px
     );
-  padding: 5rem 1rem 6rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 6rem;
 }
 
 .auth-shell .auth-intro {
