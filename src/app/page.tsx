@@ -86,7 +86,7 @@ export default function HomePage() {
 			<section className="hero-photo hero-round text-paper">
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img src="/brand/landing-01.jpg" alt="" className="hero-img kenburns" />
-				<div className="mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-center px-4 pb-44 pt-40 sm:px-6">
+				<div className="hero-drift mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-center px-4 pb-44 pt-40 sm:px-6">
 					<p className="eyebrow rise rise-1 flex items-center gap-3 text-brass">
 						<span className="gold-rule h-px w-10" aria-hidden />
 						Public safety testing &middot; Est. 2006
@@ -332,7 +332,7 @@ export default function HomePage() {
 						</Link>
 					</Reveal>
 				</div>
-				<div className="hero-photo rounded-[2rem] p-10 text-paper shadow-[0_40px_80px_-40px_rgba(24,24,24,0.55)] lg:p-16">
+				<div className="hero-photo photo-zoom rounded-[2rem] p-10 text-paper shadow-[0_40px_80px_-40px_rgba(24,24,24,0.55)] lg:p-16">
 					{/* eslint-disable-next-line @next/next/no-img-element */}
 					<img src="/brand/landing-04.jpg" alt="" className="hero-img" />
 					<Reveal>

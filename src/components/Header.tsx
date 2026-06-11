@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const NAV = [
 	{ href: '/jobs', label: 'Find Jobs' },
@@ -16,9 +16,33 @@ const NAV = [
 export function Header() {
 	const pathname = usePathname();
 	const [open, setOpen] = useState(false);
+	const [hidden, setHidden] = useState(false);
+
+	// Glide away on scroll down, return on scroll up
+	useEffect(() => {
+		let last = window.scrollY;
+		let ticking = false;
+		const onScroll = () => {
+			if (ticking) return;
+			ticking = true;
+			requestAnimationFrame(() => {
+				const y = window.scrollY;
+				setHidden(y > 160 && y > last + 2);
+				last = y;
+				ticking = false;
+			});
+		};
+		window.addEventListener('scroll', onScroll, { passive: true });
+		return () => window.removeEventListener('scroll', onScroll);
+	}, []);
 
 	return (
-		<header className="sticky top-3 z-50 px-3 pt-3 text-paper sm:px-6">
+		<header
+			style={{ viewTransitionName: 'site-header' }}
+			className={`sticky top-3 z-50 px-3 pt-3 text-paper transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-6 ${
+				hidden && !open ? '-translate-y-[130%]' : ''
+			}`}
+		>
 			<div className="header-glass mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 rounded-full border border-white/10 px-5 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)] sm:px-7">
 				<Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
 					<Image
