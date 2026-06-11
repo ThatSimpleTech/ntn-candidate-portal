@@ -10,7 +10,15 @@ import {
 	TESTS,
 } from '@/lib/content';
 
-const STATS = [
+interface Stat {
+	to: number;
+	prefix?: string;
+	suffix?: string;
+	abbreviate?: boolean;
+	label: string;
+}
+
+const STATS: Stat[] = [
 	{ to: 100, suffix: '+', label: 'Testing locations nationwide' },
 	{ to: 25_000, suffix: '+', label: 'Test sessions every year' },
 	{ to: 2500, suffix: '+', label: 'Clients served by test developer Ergometrics' },
