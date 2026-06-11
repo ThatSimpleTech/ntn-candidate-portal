@@ -18,10 +18,10 @@ BASE_PRICES = {
     "impact": 41.00,
     "medicteam": 80.00,
     "start": 41.00,
-    "cpat": 125.00,
+    "cpat": 155.00,
 }
 
-ADDITIONAL_DEPARTMENT_FEE = 12.00
+ADDITIONAL_DEPARTMENT_FEE = 15.00
 
 # CORS is owned entirely by the Function URL config (amplify/backend.ts);
 # emitting Access-Control-* here too produces duplicate headers, which

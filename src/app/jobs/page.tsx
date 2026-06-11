@@ -25,7 +25,8 @@ export default function JobsPage() {
 				<span className="heading-rule in mt-5" aria-hidden />
 				<p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
 					Every posting below accepts NTN scores. Take the listed exam once and your
-					results go to each department you apply to — add departments any time for $12.
+					results go to each department you apply to — add departments any time for $15.
+					Postings shown are representative demo data.
 				</p>
 				<div className="mt-10">
 					<Suspense>

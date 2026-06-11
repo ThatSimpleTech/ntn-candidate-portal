@@ -12,9 +12,9 @@ import {
 
 const STATS = [
 	{ to: 100, suffix: '+', label: 'Testing locations nationwide' },
-	{ to: 1_000_000, suffix: '+', abbreviate: true, label: 'Candidates tested since 2006' },
-	{ to: 1000, suffix: 's', label: 'Participating departments' },
-	{ to: 12, prefix: '$', label: 'Per additional department' },
+	{ to: 25_000, suffix: '+', label: 'Test sessions every year' },
+	{ to: 2500, suffix: '+', label: 'Clients served by test developer Ergometrics' },
+	{ to: 15, prefix: '$', label: 'Per additional department' },
 ];
 
 const STEPS = [
@@ -28,7 +28,7 @@ const STEPS = [
 	},
 	{
 		title: 'Apply everywhere',
-		body: 'Your scores go to every department you select, instantly. Add more departments any time for a flat $12 — no retesting.',
+		body: 'Your scores go to every department you select, instantly. Add more departments any time for $15 — no retesting.',
 	},
 ];
 
