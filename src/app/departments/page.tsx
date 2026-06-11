@@ -47,11 +47,13 @@ export default function DepartmentsPage() {
 							Your next academy class is already testing
 						</h1>
 						<p className="mt-6 max-w-xl text-muted-ink">
-							Thousands of agencies use NTN to keep ranked, pre-screened candidate
+							Agencies nationwide use NTN to keep ranked, pre-screened candidate
 							lists flowing year-round — without running a single exam themselves.
 						</p>
 						<a
-							href="mailto:agencies@nationaltestingnetwork.com"
+							href="https://departments.nationaltestingnetwork.com"
+							target="_blank"
+							rel="noreferrer"
 							className="btn-gold btn-pill eyebrow mt-10 px-7 py-4"
 						>
 							Talk to the agency team →
@@ -81,8 +83,11 @@ export default function DepartmentsPage() {
 
 			<section className="paper-tex border-b-2 border-ink">
 				<div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-					<p className="eyebrow text-signal">Currently recruiting through NTN</p>
+					<p className="eyebrow text-signal">How the network looks</p>
 					<h2 className="display mt-4 text-4xl">Departments on the network</h2>
+					<p className="mono mt-3 text-xs text-muted">
+						Representative demo agencies — not live NTN recruitments.
+					</p>
 					<span className="heading-rule in mt-4" aria-hidden />
 					<div className="mt-10 grid border-t border-line sm:grid-cols-2">
 						{DEPARTMENTS.map((d) => (

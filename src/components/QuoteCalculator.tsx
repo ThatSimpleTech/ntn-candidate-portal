@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { pricingQuoteUrl } from '@/lib/amplify-client';
 import { TESTS } from '@/lib/content';
 
-const ADDITIONAL_DEPARTMENT_FEE = 12;
+const ADDITIONAL_DEPARTMENT_FEE = 15;
 
 interface Quote {
 	lineItems: { label: string; amount: number }[];

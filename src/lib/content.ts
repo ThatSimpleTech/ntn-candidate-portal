@@ -4,8 +4,11 @@
  * prerendered HTML and the AppSync data never drift in the demo.
  *
  * Test names, prices, and section structures reflect NTN's published catalog
- * (test-pricing.cfm, June 2026). Departments and postings are representative
- * demo data, not live recruitments.
+ * and FAQ (verified against nationaltestingnetwork.com, June 2026): written
+ * exams $41-$80, $15 per additional department job, CPAT $155 incl. two
+ * orientations, scores expire after one year, three-month retest wait.
+ * Exact exam fees can vary by department and location. Departments and
+ * postings are representative demo data, not live recruitments.
  */
 
 export type Classification =
@@ -164,10 +167,10 @@ export const TESTS: TestProduct[] = [
 		name: 'CPAT',
 		code: 'CP-01',
 		classification: 'FIREFIGHTER',
-		priceUsd: 125,
-		durationMinutes: 11,
+		priceUsd: 155,
+		durationMinutes: 10,
 		summary:
-			'The Candidate Physical Ability Test — the IAFF/IAFC standard eight-event physical for firefighter candidates, administered at licensed NTN facilities.',
+			'The Candidate Physical Ability Test — the IAFF/IAFC standard eight-event physical for firefighter candidates. The fee includes two orientation sessions.',
 		audience: 'Firefighter candidates (physical ability)',
 		sections: [
 			{ name: 'Stair Climb', description: 'Weighted StepMill event.' },
@@ -491,32 +494,32 @@ export const FAQS: Faq[] = [
 	{
 		question: 'How does NTN testing work?',
 		answer:
-			'Test once, apply broadly. You schedule a single exam (in person at 100+ testing centers or virtually from home), and your scores go to every participating department you select. Your base fee includes one department; each additional department is a flat $12.',
+			'Test once, apply broadly. You schedule a single exam (in person at 100+ testing centers or virtually from home), and your scores go to every participating department you select. Your base fee includes one department; each additional department job is $15.',
 	},
 	{
 		question: 'How much does testing cost?',
 		answer:
-			'Written exams range from $41 (REACT, IMPACT) to $80 (MedicTEAM); most national exams are $55. The CPAT physical ability test is $125. Fee waivers are available for candidates with financial need — submit the waiver form before scheduling.',
+			'Written exams range from $41 (REACT, IMPACT) to $80 (MedicTEAM); national exams like FrontLine are commonly $55, though pricing varies by department and test location. The CPAT physical ability test is $155, including two orientation sessions. Many departments cover the exam fee for their own recruitments — check the posting.',
 	},
 	{
 		question: 'Can I take my test from home?',
 		answer:
-			'Yes. Every written exam is available as a proctored virtual session. You need a computer with a webcam, a wired headset, and a quiet room. Physical ability tests (CPAT, Firefighter Mile) are administered in person at licensed facilities.',
+			'Most NTN written exams offer a proctored virtual option. You need a computer with a webcam and a quiet room. Physical ability tests (CPAT, Firefighter Mile) are administered in person at licensed facilities.',
 	},
 	{
 		question: 'How long are my scores valid?',
 		answer:
-			'Most departments accept scores for 12 months from your test date. Individual departments set their own validity windows, which are shown on each job posting.',
+			'Scores expire one year after your last test date. Departments can also set their own validity windows for a posting, so check each recruitment for specifics.',
 	},
 	{
 		question: 'What if I want to apply to more departments after testing?',
 		answer:
-			'Log in to your dashboard at any time and transfer your existing scores to additional departments for $12 each. No retesting required.',
+			'Log in to your dashboard at any time and add additional participating departments for $15 each. No retesting required.',
 	},
 	{
 		question: 'Can I retake a test if I am not happy with my score?',
 		answer:
-			'Yes, after a 90-day waiting period from your previous attempt. Your most recent score is the one reported to departments.',
+			'Yes, after a minimum three-month waiting period from your previous attempt. Retesting replaces your earlier results — the most recent score is the one reported to departments.',
 	},
 	{
 		question: 'How are my scores calculated?',
@@ -526,7 +529,7 @@ export const FAQS: Faq[] = [
 	{
 		question: 'What happens after I test?',
 		answer:
-			'Scores are typically released to your dashboard within 2-3 business days and forwarded automatically to your selected departments. Departments contact candidates directly for the next steps in their hiring process.',
+			'Scores are reported securely to your dashboard and forwarded to your selected departments after scoring is complete. Departments contact candidates directly for the next steps in their hiring process.',
 	},
 ];
 

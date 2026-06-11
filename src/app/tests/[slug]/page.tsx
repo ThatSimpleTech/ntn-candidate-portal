@@ -84,7 +84,7 @@ export default async function TestPage({ params }: Props) {
 								<p className="mono mt-1 text-xs text-muted-ink">
 									includes one department
 								</p>
-								<p className="mono text-xs text-muted-ink">+$12 each additional</p>
+								<p className="mono text-xs text-muted-ink">+$15 each additional</p>
 							</div>
 						</div>
 					</div>

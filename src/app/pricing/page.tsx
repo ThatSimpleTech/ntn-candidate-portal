@@ -6,7 +6,7 @@ import { CLASSIFICATION_LABELS, TESTS } from '@/lib/content';
 export const metadata: Metadata = {
 	title: 'Test Pricing',
 	description:
-		'Transparent pricing for every NTN exam: $41-$125 per test including one department, $12 for each additional department. Fee waivers available.',
+		'Transparent pricing for every NTN exam: $41-$155 per test including one department, $15 for each additional department job.',
 	openGraph: {
 		title: 'Test Pricing | NTN',
 		description:
@@ -27,8 +27,8 @@ export default function PricingPage() {
 				<span className="heading-rule in mt-5" aria-hidden />
 				<p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
 					Every exam fee includes score delivery to one department. Add as many more as
-					you want — at testing time or months later — for a flat $12 each. Fee waivers
-					are available for candidates with financial need.
+					you want — at testing time or months later — for $15 each. Exact fees can vary
+					by department and test location; your total is itemized before checkout.
 				</p>
 
 				<div className="card-static mt-12 overflow-x-auto border border-line">
@@ -70,26 +70,26 @@ export default function PricingPage() {
 					<QuoteCalculator />
 					<div className="divide-y divide-line border-t border-line">
 						<div className="py-6">
-							<p className="eyebrow text-signal">Score transfers</p>
-							<p className="display gold-emboss mt-3 text-5xl">$12</p>
+							<p className="eyebrow text-signal">Additional departments</p>
+							<p className="display gold-emboss mt-3 text-5xl">$15</p>
 							<p className="mt-2 text-sm leading-relaxed text-muted">
 								Already tested? Send your existing scores to any additional
-								participating department — no retest, valid for 12 months.
+								participating department — no retest. Scores expire one year after
+								your last test date.
 							</p>
 						</div>
 						<div className="py-6">
-							<p className="eyebrow text-signal">Fee waivers</p>
+							<p className="eyebrow text-signal">Department-paid testing</p>
 							<p className="mt-3 text-sm leading-relaxed text-muted">
-								Financial need shouldn&apos;t end a public safety career before it
-								starts. Submit the waiver form before scheduling and our team will
-								review it within two business days.
+								Many agencies cover the exam fee for their own recruitments — check
+								each posting for details before you pay out of pocket.
 							</p>
 						</div>
 						<div className="py-6">
 							<p className="eyebrow text-signal">Retakes</p>
 							<p className="mt-3 text-sm leading-relaxed text-muted">
-								Retest after a 90-day waiting period. Your most recent score is the
-								one departments see.
+								Retest after a minimum three-month waiting period. Retesting replaces
+								your earlier results — departments see your most recent score.
 							</p>
 						</div>
 					</div>
