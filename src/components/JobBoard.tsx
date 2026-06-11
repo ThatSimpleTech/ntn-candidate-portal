@@ -86,39 +86,42 @@ export function JobBoard({ jobs, departments }: Props) {
 				{visible.length} open recruitment{visible.length === 1 ? '' : 's'}
 			</p>
 
-			<ul className="mt-4 space-y-3">
+			<ul className="mt-4 border-t border-line">
 				{visible.map((job) => {
 					const dept = deptBySlug.get(job.departmentSlug);
 					return (
 						<li key={job.slug}>
 							<Link
 								href={`/jobs/${job.slug}`}
-								className="card-lift grid gap-4 border border-line bg-paper p-5 sm:grid-cols-[1fr_auto] sm:items-center"
+								className="ink-sweep group -mx-4 grid grid-cols-[1fr_auto] items-center gap-x-6 gap-y-1 border-b border-line px-4 py-6"
 							>
-								<div>
-									<div className="flex flex-wrap items-center gap-3">
-										<span className="eyebrow rounded-full bg-ink px-3 py-1 text-paper">
+								<span className="min-w-0">
+									<span className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+										<span className="display text-2xl transition-colors duration-500 group-hover:text-paper sm:text-3xl">
+											{job.title}
+										</span>
+										<span className="eyebrow text-signal transition-colors duration-500 group-hover:text-brass">
 											{CLASSIFICATION_LABELS[job.classification]}
 										</span>
-										<span className="mono text-xs text-muted">
-											Closes {job.closingDate}
-										</span>
-									</div>
-									<h2 className="display mt-3 text-3xl">{job.title}</h2>
-									<p className="mt-1 text-sm text-muted">
+									</span>
+									<span className="mt-1 block text-sm text-muted transition-colors duration-500 group-hover:text-paper/70">
 										{dept?.name} — {job.location}
-									</p>
-								</div>
-								<div className="text-left sm:text-right">
-									<p className="mono text-sm">{job.salary}</p>
-									<p className="eyebrow mt-2 text-signal">View posting →</p>
-								</div>
+									</span>
+								</span>
+								<span className="text-right">
+									<span className="mono block text-sm transition-colors duration-500 group-hover:text-brass sm:text-base">
+										{job.salary}
+									</span>
+									<span className="mono mt-0.5 block text-[0.65rem] text-muted transition-colors duration-500 group-hover:text-paper/60">
+										closes {job.closingDate}
+									</span>
+								</span>
 							</Link>
 						</li>
 					);
 				})}
 				{visible.length === 0 && (
-					<li className="border border-dashed border-line p-10 text-center text-sm text-muted">
+					<li className="border-b border-line py-12 text-center text-sm text-muted">
 						No openings match that filter right now. New recruitments post weekly —
 						check back soon.
 					</li>

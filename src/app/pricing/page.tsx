@@ -68,8 +68,8 @@ export default function PricingPage() {
 
 				<div className="mt-12 grid gap-8 lg:grid-cols-[1fr_400px]">
 					<QuoteCalculator />
-					<div className="space-y-4">
-						<div className="card-static border border-line p-6">
+					<div className="divide-y divide-line border-t border-line">
+						<div className="py-6">
 							<p className="eyebrow text-signal">Score transfers</p>
 							<p className="display gold-emboss mt-3 text-5xl">$12</p>
 							<p className="mt-2 text-sm leading-relaxed text-muted">
@@ -77,7 +77,7 @@ export default function PricingPage() {
 								participating department — no retest, valid for 12 months.
 							</p>
 						</div>
-						<div className="card-static border border-line p-6">
+						<div className="py-6">
 							<p className="eyebrow text-signal">Fee waivers</p>
 							<p className="mt-3 text-sm leading-relaxed text-muted">
 								Financial need shouldn&apos;t end a public safety career before it
@@ -85,7 +85,7 @@ export default function PricingPage() {
 								review it within two business days.
 							</p>
 						</div>
-						<div className="card-static border border-line p-6">
+						<div className="py-6">
 							<p className="eyebrow text-signal">Retakes</p>
 							<p className="mt-3 text-sm leading-relaxed text-muted">
 								Retest after a 90-day waiting period. Your most recent score is the

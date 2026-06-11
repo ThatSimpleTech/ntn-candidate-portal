@@ -249,6 +249,46 @@ body {
   }
 }
 
+/* Engraved ghost numeral: stroke-only foil, like a stamped plate */
+.num-ghost {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(199, 174, 28, 0.7);
+}
+
+.num-ghost-dark {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(216, 189, 34, 0.55);
+}
+
+/* Registry row: ink washes in from the left edge on hover */
+.ink-sweep {
+  position: relative;
+  isolation: isolate;
+}
+
+.ink-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--r-card);
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ink-sweep:hover::before,
+.ink-sweep:focus-visible::before {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ink-sweep::before {
+    transition: none;
+  }
+}
+
 /* Warm gold aura mounted behind hero headlines */
 .glow-gold {
   position: absolute;
