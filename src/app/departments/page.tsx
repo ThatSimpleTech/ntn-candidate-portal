@@ -40,7 +40,7 @@ export default function DepartmentsPage() {
 			<section className="hero-photo hero-round -mt-19 text-paper">
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img src="/brand/landing-02.jpg" alt="" className="hero-img kenburns" />
-				<div>
+				<div className="hero-drift">
 					<div className="mx-auto max-w-6xl px-4 pb-20 pt-40 sm:px-6">
 						<p className="eyebrow text-brass">For departments & agencies</p>
 						<h1 className="display mt-6 max-w-3xl text-[clamp(3rem,6vw,5.5rem)]">

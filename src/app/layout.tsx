@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { Barlow_Condensed, Public_Sans } from 'next/font/google';
+import { ViewTransition } from 'react';
 import './globals.css';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
+import { SmoothScroll } from '@/components/SmoothScroll';
 import { SITE } from '@/lib/content';
 
 const barlow = Barlow_Condensed({
@@ -49,8 +51,13 @@ export default function RootLayout({
 			className={`${barlow.variable} ${publicSans.variable} h-full antialiased`}
 		>
 			<body className="flex min-h-full flex-col">
+				<SmoothScroll />
 				<Header />
-				<main className="flex-1">{children}</main>
+				<main className="flex-1">
+					<ViewTransition default="page-fade" update="page-fade">
+						{children}
+					</ViewTransition>
+				</main>
 				<Footer />
 			</body>
 		</html>
